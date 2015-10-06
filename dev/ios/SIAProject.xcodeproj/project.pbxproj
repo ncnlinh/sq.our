@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		0F6E4BA41BC2B87500ADD31B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA31BC2B87500ADD31B /* main.m */; };
 		0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */; };
-		0F6E4BAA1BC2B87500ADD31B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* ViewController.m */; };
-		0F6E4BAD1BC2B87500ADD31B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAB1BC2B87500ADD31B /* Main.storyboard */; };
+		0F6E4BAA1BC2B87500ADD31B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* MainViewController.m */; };
 		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
-		0F6E4BB21BC2B87500ADD31B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BB01BC2B87500ADD31B /* LaunchScreen.storyboard */; };
+		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
+		0FBD2C451BC2FCBC00FA149B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +23,16 @@
 		0F6E4BA31BC2B87500ADD31B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0F6E4BA81BC2B87500ADD31B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0F6E4BA91BC2B87500ADD31B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0F6E4BAC1BC2B87500ADD31B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F6E4BA81BC2B87500ADD31B /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0F6E4BA91BC2B87500ADD31B /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0F6E4BB11BC2B87500ADD31B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F6E4BB31BC2B87500ADD31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
+		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
+		0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowUIView.h; sourceTree = "<group>"; };
+		0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowUIView.m; sourceTree = "<group>"; };
+		0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SIAProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B51EC0270BAFE7466A981B /* Pods-SIAProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.release.xcconfig"; sourceTree = "<group>"; };
 		FD4A5FCB7C2F67FF416C8F72 /* Pods-SIAProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -47,6 +53,7 @@
 		0F6E4B961BC2B87500ADD31B = {
 			isa = PBXGroup;
 			children = (
+				0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */,
 				0F6E4BA11BC2B87500ADD31B /* SIAProject */,
 				0F6E4BA01BC2B87500ADD31B /* Products */,
 				AFE475039912C1D9BB07FD51 /* Pods */,
@@ -65,15 +72,17 @@
 		0F6E4BA11BC2B87500ADD31B /* SIAProject */ = {
 			isa = PBXGroup;
 			children = (
+				0FBD2C3F1BC2FACF00FA149B /* Views */,
+				0FBD2C3B1BC2DE7A00FA149B /* Helpers */,
+				0FBD2C361BC2C41900FA149B /* Controllers */,
 				0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */,
 				0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */,
-				0F6E4BA81BC2B87500ADD31B /* ViewController.h */,
-				0F6E4BA91BC2B87500ADD31B /* ViewController.m */,
-				0F6E4BAB1BC2B87500ADD31B /* Main.storyboard */,
+				0F6E4BA81BC2B87500ADD31B /* MainViewController.h */,
+				0F6E4BA91BC2B87500ADD31B /* MainViewController.m */,
 				0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */,
-				0F6E4BB01BC2B87500ADD31B /* LaunchScreen.storyboard */,
 				0F6E4BB31BC2B87500ADD31B /* Info.plist */,
 				0F6E4BA21BC2B87500ADD31B /* Supporting Files */,
+				0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */,
 			);
 			path = SIAProject;
 			sourceTree = "<group>";
@@ -84,6 +93,39 @@
 				0F6E4BA31BC2B87500ADD31B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FBD2C361BC2C41900FA149B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0FBD2C3B1BC2DE7A00FA149B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */,
+				0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0FBD2C3F1BC2FACF00FA149B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FBD2C401BC2FAD600FA149B /* Extended Views */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0FBD2C401BC2FAD600FA149B /* Extended Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */,
+				0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */,
+			);
+			name = "Extended Views";
 			sourceTree = "<group>";
 		};
 		5C0993E6D5A8DDC8FF23007A /* Frameworks */ = {
@@ -162,9 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6E4BB21BC2B87500ADD31B /* LaunchScreen.storyboard in Resources */,
+				0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */,
 				0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */,
-				0F6E4BAD1BC2B87500ADD31B /* Main.storyboard in Resources */,
+				0FBD2C451BC2FCBC00FA149B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,32 +250,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6E4BAA1BC2B87500ADD31B /* ViewController.m in Sources */,
+				0F6E4BAA1BC2B87500ADD31B /* MainViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
+				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
+				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0F6E4BAB1BC2B87500ADD31B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F6E4BAC1BC2B87500ADD31B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0F6E4BB01BC2B87500ADD31B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F6E4BB11BC2B87500ADD31B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0F6E4BB41BC2B87500ADD31B /* Debug */ = {
@@ -322,7 +347,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD4A5FCB7C2F67FF416C8F72 /* Pods-SIAProject.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SIAProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sia.formidable.SIAProject;
@@ -334,7 +358,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2B51EC0270BAFE7466A981B /* Pods-SIAProject.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SIAProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sia.formidable.SIAProject;

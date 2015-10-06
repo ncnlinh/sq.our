@@ -1,9 +1,34 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
+# Uncomment this line to define a global platform for your
+platform :ios, '8.0'
 
 target 'SIAProject' do
 
+# Font Icon Helper
+pod 'FontAwesomeKit', '~> 2.2.0'
 # HTTP Framework
-pod 'AFNetworking', '~> 2.5.4'
+pod 'AFNetworking', '~> 2.6.0'
+pod 'PromiseKit', '~> 1.5.3'
+pod 'PromiseKit-AFNetworking', '~> 0.1.7'
+# Auto Layout Framework
+pod 'Masonry', '~> 0.6.2'
+# Model Framework
+pod 'Mantle', '~> 2.0.2'
+# Internet Connection Helper
+pod 'Reachability', '~> 3.2'
+# Date Framework & Calendar
+pod 'DateTools', '~> 1.6.1'
+pod 'JTCalendar', '~> 2.0.2'
+# Progress Indicator
+pod 'SpinKit', '~> 1.2.0'
+# Image Cache
+pod 'SDWebImage', '~> 3.7.2'
+# Keyboard Manager
+pod 'IQKeyboardManager', '~> 3.2.4'
+# Animation Framework (Use repo while waiting for next release to get latest bug fixes)
+pod 'pop', :git => 'https://github.com/facebook/pop.git'
+# Keychain Store
+pod 'UICKeyChainStore', '~> 2.0.4'
+# Custom Views
+pod 'ZLSwipeableView', '~> 0.0.7'
 
 end
