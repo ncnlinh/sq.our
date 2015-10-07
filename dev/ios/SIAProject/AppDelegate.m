@@ -1,6 +1,9 @@
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 #import "AppDelegate.h"
 
-#import "MainViewController.h"
+#import "LoginViewController.h"
+#import "InspiredViewController.h"
 
 @interface AppDelegate ()
 
@@ -8,16 +11,36 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Setup FB SDK
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+  
   // Initialize window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
-  MainViewController *vc = [[MainViewController alloc] init];
-  [self.window setRootViewController:vc];
+  if([FBSDKAccessToken currentAccessToken]){
+    InspiredViewController *mainViewController = [[InspiredViewController alloc] init];
+    [self.window setRootViewController:mainViewController];
+  } else {
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [self.window setRootViewController:loginViewController];
+  }
   [self.window makeKeyAndVisible];
   
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  // Setup FB SDK
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation];
+}
+
+- (void)setRootViewController:(UIViewController *)viewController {
+  [self.window setRootViewController:viewController];
 }
 
 @end

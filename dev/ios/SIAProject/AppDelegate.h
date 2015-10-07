@@ -4,6 +4,12 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+/**
+ *  Set the root view controller of the application
+ *
+ *  @param viewController The next root view controller
+ */
+- (void)setRootViewController:(UIViewController *)viewController;
 
 @end
 
