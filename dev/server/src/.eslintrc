@@ -1,0 +1,16 @@
+{
+  "rules": {
+/**
+ * Strict mode
+ */
+    // babel inserts "use strict"; for us
+    // http://eslint.org/docs/rules/strict
+    "strict": [2, "never"],
+
+/**
+ * ES6
+ */
+    "no-var": 2,                     // http://eslint.org/docs/rules/no-var
+    "prefer-const": 2,               // http://eslint.org/docs/rules/prefer-const
+  } 
+}

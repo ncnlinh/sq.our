@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "squot-api",
+      "script": "index.js",
+      "env": {
+        "NODE_ENV": "production",
+        "BROWSER": false
+      }
+    }
+  ]
+}
