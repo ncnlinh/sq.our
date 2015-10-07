@@ -13,6 +13,9 @@
 		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
 		0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A31BC534FD00970A68 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A61BC5381000970A68 /* UIColor+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170AA1BC5568100970A68 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A91BC5568100970A68 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170AD1BC55E6900970A68 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170AC1BC55E6900970A68 /* HttpClient.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170B01BC55F1700970A68 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170AF1BC55F1700970A68 /* Constants.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
@@ -32,6 +35,12 @@
 		0F7170A31BC534FD00970A68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0F7170A51BC5381000970A68 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		0F7170A61BC5381000970A68 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		0F7170A81BC5568100970A68 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0F7170A91BC5568100970A68 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0F7170AB1BC55E6900970A68 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		0F7170AC1BC55E6900970A68 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		0F7170AE1BC55F1700970A68 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0F7170AF1BC55F1700970A68 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
@@ -80,6 +89,8 @@
 				0FBD2C361BC2C41900FA149B /* Controllers */,
 				0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */,
 				0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */,
+				0F7170A81BC5568100970A68 /* MainViewController.h */,
+				0F7170A91BC5568100970A68 /* MainViewController.m */,
 				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
 				0F7170A31BC534FD00970A68 /* LoginViewController.m */,
 				0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */,
@@ -114,6 +125,10 @@
 				0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */,
 				0F7170A51BC5381000970A68 /* UIColor+Helper.h */,
 				0F7170A61BC5381000970A68 /* UIColor+Helper.m */,
+				0F7170AB1BC55E6900970A68 /* HttpClient.h */,
+				0F7170AC1BC55E6900970A68 /* HttpClient.m */,
+				0F7170AE1BC55F1700970A68 /* Constants.h */,
+				0F7170AF1BC55F1700970A68 /* Constants.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -259,6 +274,9 @@
 				0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
+				0F7170AD1BC55E6900970A68 /* HttpClient.m in Sources */,
+				0F7170AA1BC5568100970A68 /* MainViewController.m in Sources */,
+				0F7170B01BC55F1700970A68 /* Constants.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
