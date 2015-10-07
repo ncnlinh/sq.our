@@ -1,18 +1,18 @@
 #import <Masonry/Masonry.h>
 #import <ZLSwipeableView/ZLSwipeableView.h>
 
-#import "MainViewController.h"
+#import "InspiredViewController.h"
 
 #import "ShadowUIView.h"
 #import "UIView+Helper.h"
 
-@interface MainViewController ()<ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+@interface InspiredViewController ()<ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
 @property (strong, nonatomic) ZLSwipeableView *swipeView;
 
 @end
 
-@implementation MainViewController
+@implementation InspiredViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];

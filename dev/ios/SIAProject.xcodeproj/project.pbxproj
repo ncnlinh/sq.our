@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0F6E4BA41BC2B87500ADD31B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA31BC2B87500ADD31B /* main.m */; };
 		0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */; };
-		0F6E4BAA1BC2B87500ADD31B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* MainViewController.m */; };
+		0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */; };
 		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
+		0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A31BC534FD00970A68 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A61BC5381000970A68 /* UIColor+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
-		0FBD2C451BC2FCBC00FA149B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
 /* End PBXBuildFile section */
 
@@ -23,16 +24,19 @@
 		0F6E4BA31BC2B87500ADD31B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0F6E4BA81BC2B87500ADD31B /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		0F6E4BA91BC2B87500ADD31B /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InspiredViewController.h; sourceTree = "<group>"; };
+		0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InspiredViewController.m; sourceTree = "<group>"; };
 		0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F6E4BB31BC2B87500ADD31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F7170A21BC534FD00970A68 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0F7170A31BC534FD00970A68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0F7170A51BC5381000970A68 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		0F7170A61BC5381000970A68 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
 		0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowUIView.h; sourceTree = "<group>"; };
 		0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowUIView.m; sourceTree = "<group>"; };
-		0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SIAProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B51EC0270BAFE7466A981B /* Pods-SIAProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.release.xcconfig"; sourceTree = "<group>"; };
 		FD4A5FCB7C2F67FF416C8F72 /* Pods-SIAProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -53,7 +57,6 @@
 		0F6E4B961BC2B87500ADD31B = {
 			isa = PBXGroup;
 			children = (
-				0FBD2C441BC2FCBC00FA149B /* Default-568h@2x.png */,
 				0F6E4BA11BC2B87500ADD31B /* SIAProject */,
 				0F6E4BA01BC2B87500ADD31B /* Products */,
 				AFE475039912C1D9BB07FD51 /* Pods */,
@@ -77,8 +80,10 @@
 				0FBD2C361BC2C41900FA149B /* Controllers */,
 				0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */,
 				0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */,
-				0F6E4BA81BC2B87500ADD31B /* MainViewController.h */,
-				0F6E4BA91BC2B87500ADD31B /* MainViewController.m */,
+				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
+				0F7170A31BC534FD00970A68 /* LoginViewController.m */,
+				0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */,
+				0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */,
 				0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */,
 				0F6E4BB31BC2B87500ADD31B /* Info.plist */,
 				0F6E4BA21BC2B87500ADD31B /* Supporting Files */,
@@ -107,6 +112,8 @@
 			children = (
 				0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */,
 				0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */,
+				0F7170A51BC5381000970A68 /* UIColor+Helper.h */,
+				0F7170A61BC5381000970A68 /* UIColor+Helper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -206,7 +213,6 @@
 			files = (
 				0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */,
 				0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */,
-				0FBD2C451BC2FCBC00FA149B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6E4BAA1BC2B87500ADD31B /* MainViewController.m in Sources */,
+				0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
+				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
+				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,
 			);
