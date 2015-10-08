@@ -3,13 +3,18 @@ import mongoose, {Schema} from 'mongoose';
 const ObjectId = Schema.Types.ObjectId;
 
 const Flight = new Schema({
-  flightNumber: {type: String, required: true, index: true},
+  flightNumbers: {type: String, required: true, index: true},
   startDate: {type: Date, required: true, index: true},
   startLocation: {type: String, required: true, index: true},
   endLocation: {type: String, required: true, index: true},
   users: [
     {
-      facebookId: {type: String, required: true, index: true},
+      user: {
+        _id: {type: Schema.Types.ObjectId, required: true, index: true, unique: true},
+        facebookId: {type: String, required: true, index: true, unique: true},
+        name: {type: String, required: true, index: true},
+        bankAccount: {type: String, index: true}
+      },
       purpose: {type: String}
     }
   ]
