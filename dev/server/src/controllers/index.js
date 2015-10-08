@@ -1,3 +1,5 @@
 export default {
-  UserController: require('./UserController')
+  UserController: require('./UserController'),
+  FlightController: require('./FlightController'),
+  FlightSearchController: require('./FlightSearchController')
 };

@@ -17,11 +17,11 @@ UserController.request.createUser = (req, res) => {
 };
 
 UserController.promise.createUser = (req, res) => {
-  const {facebookId} = req.body;
+  const {facebookId, name} = req.body;
   return Promise.resolve(User.findOne({facebookId}).exec())
     .then(MongooseHelper.checkExists)
     .catch(() => {
-      return MongooseHelper.create(User, {facebookId});
+      return MongooseHelper.create(User, {facebookId, name});
     })
 };
 
