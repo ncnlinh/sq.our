@@ -3,7 +3,7 @@
 #import "AppDelegate.h"
 
 #import "LoginViewController.h"
-#import "InspiredViewController.h"
+#import "MainViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,14 +19,8 @@
   // Initialize window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
-  if([FBSDKAccessToken currentAccessToken]){
-    InspiredViewController *mainViewController = [[InspiredViewController alloc] init];
-    [self.window setRootViewController:mainViewController];
-  } else {
-    LoginViewController *loginViewController = [[LoginViewController alloc] init];
-    [self.window setRootViewController:loginViewController];
-  }
-  [self.window makeKeyAndVisible];
+  LoginViewController *loginViewController = [[LoginViewController alloc] init];
+  [self.window setRootViewController:loginViewController];  [self.window makeKeyAndVisible];
   
   return YES;
 }

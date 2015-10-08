@@ -1,9 +1,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "LoginViewController.h"
-#import "InspiredViewController.h"
 
+#import "InspiredViewController.h"
+#import "Constants.h"
+#import "HttpClient.h"
 #import "AppDelegate.h"
 #import "UIColor+Helper.h"
 
@@ -30,9 +33,18 @@
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                error:(NSError *)error {
   if (result.token != NULL) {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    InspiredViewController *mainViewController = [[InspiredViewController alloc] init];
-    [appDelegate setRootViewController:mainViewController];
+    NSString *url = [NSString stringWithFormat:@"%@/api/login", [Constants apiUrl]];
+    NSLog(@"%@", url);
+    NSLog(@"%@", result.token.userID);
+    [HttpClient postWithUrl:url body:@{@"facebookId": result.token.userID}]
+    .then(^{
+      AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+      InspiredViewController *mainViewController = [[InspiredViewController alloc] init];
+      [appDelegate setRootViewController:mainViewController];
+    })
+    .catch(^(NSError *error) {
+      NSLog(@"%@", [error localizedDescription]);
+    });
   }
 }
 

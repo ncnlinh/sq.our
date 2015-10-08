@@ -2,7 +2,7 @@ import Constants from '../config/constants';
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
 
-import {ClientError} from 'helpers';
+import {ClientError} from './errors';
 
 export default {
   isObjectId: (str) => {
@@ -24,6 +24,7 @@ export default {
       if (!obj) {
         resolve();
       } else {
+        console.log(ClientError);
         reject(new ClientError(Constants.ERROR_DID_EXIST));
       }
     });
