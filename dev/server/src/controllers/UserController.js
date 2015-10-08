@@ -19,10 +19,10 @@ UserController.request.createUser = (req, res) => {
 UserController.promise.createUser = (req, res) => {
   const {facebookId} = req.body;
   return Promise.resolve(User.findOne({facebookId}).exec())
-    .then(MongooseHelper.checkNil)
-    .then(() => {
+    .then(MongooseHelper.checkExists)
+    .catch(() => {
       return MongooseHelper.create(User, {facebookId});
-    });
+    })
 };
 
 export default UserController;
