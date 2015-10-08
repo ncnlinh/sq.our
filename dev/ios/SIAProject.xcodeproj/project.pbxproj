@@ -13,6 +13,10 @@
 		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
 		0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A31BC534FD00970A68 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A61BC5381000970A68 /* UIColor+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170B31BC6862800970A68 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170B21BC6862800970A68 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170B71BC686FC00970A68 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170B61BC686FC00970A68 /* SideBarViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170BA1BC6870B00970A68 /* SidebarContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170B91BC6870B00970A68 /* SidebarContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F7170BD1BC687CE00970A68 /* UIViewController+SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170BC1BC687CE00970A68 /* UIViewController+SideBarViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
@@ -32,6 +36,14 @@
 		0F7170A31BC534FD00970A68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0F7170A51BC5381000970A68 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		0F7170A61BC5381000970A68 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		0F7170B11BC6862800970A68 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0F7170B21BC6862800970A68 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0F7170B51BC686FC00970A68 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
+		0F7170B61BC686FC00970A68 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
+		0F7170B81BC6870B00970A68 /* SidebarContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarContainerViewController.h; sourceTree = "<group>"; };
+		0F7170B91BC6870B00970A68 /* SidebarContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarContainerViewController.m; sourceTree = "<group>"; };
+		0F7170BB1BC687CE00970A68 /* UIViewController+SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SideBarViewController.h"; sourceTree = "<group>"; };
+		0F7170BC1BC687CE00970A68 /* UIViewController+SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SideBarViewController.m"; sourceTree = "<group>"; };
 		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
@@ -80,10 +92,6 @@
 				0FBD2C361BC2C41900FA149B /* Controllers */,
 				0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */,
 				0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */,
-				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
-				0F7170A31BC534FD00970A68 /* LoginViewController.m */,
-				0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */,
-				0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */,
 				0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */,
 				0F6E4BB31BC2B87500ADD31B /* Info.plist */,
 				0F6E4BA21BC2B87500ADD31B /* Supporting Files */,
@@ -100,9 +108,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0F7170B41BC686DE00970A68 /* SideBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0F7170B51BC686FC00970A68 /* SideBarViewController.h */,
+				0F7170B61BC686FC00970A68 /* SideBarViewController.m */,
+				0F7170B81BC6870B00970A68 /* SidebarContainerViewController.h */,
+				0F7170B91BC6870B00970A68 /* SidebarContainerViewController.m */,
+				0F7170BB1BC687CE00970A68 /* UIViewController+SideBarViewController.h */,
+				0F7170BC1BC687CE00970A68 /* UIViewController+SideBarViewController.m */,
+			);
+			name = SideBarViewController;
+			sourceTree = "<group>";
+		};
 		0FBD2C361BC2C41900FA149B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F7170B41BC686DE00970A68 /* SideBarViewController */,
+				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
+				0F7170A31BC534FD00970A68 /* LoginViewController.m */,
+				0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */,
+				0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */,
+				0F7170B11BC6862800970A68 /* MainViewController.h */,
+				0F7170B21BC6862800970A68 /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,9 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F7170BA1BC6870B00970A68 /* SidebarContainerViewController.m in Sources */,
+				0F7170B71BC686FC00970A68 /* SideBarViewController.m in Sources */,
 				0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
+				0F7170B31BC6862800970A68 /* MainViewController.m in Sources */,
+				0F7170BD1BC687CE00970A68 /* UIViewController+SideBarViewController.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
