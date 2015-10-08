@@ -23,7 +23,7 @@ const randomString = (length) => {
 const consumerSecret = key.YELP_CONSUMER_SECRET;
 const tokenSecret = key.YELP_TOKEN_SECRET;
 
-Yelp.services.search = (term, location, limit, offset) => {
+Yelp.services.search = (term, location, limit, offset, category_filter) => {
   const oauth = {
     oauth_consumer_key: key.YELP_CONSUMER_KEY,
     oauth_token: key.YELP_TOKEN,
@@ -32,7 +32,7 @@ Yelp.services.search = (term, location, limit, offset) => {
     oauth_signature_method : 'HMAC-SHA1',
     oauth_version : '1.0'
   }
-  const queryData = {term, location, limit, offset};
+  const queryData = {term, location, limit, offset, category_filter};
   const url = endpoint.YELP_SEARCH;
   // const encodedSignature = oauthSignature.generate('GET', url, _.extend(oauth, queryData) , consumerSecret, tokenSecret),
   const signature = oauthSignature.generate('GET', url, _.extend(oauth, queryData), consumerSecret, tokenSecret,

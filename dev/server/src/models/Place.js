@@ -5,6 +5,8 @@ const Place = new Schema({
   name: {type: String, index: true, required: true},
   category: {type: String, enum: ['hotel', 'restaurant', 'attraction']},
   description: {type: String},
+  lat: {type: Number},
+  lon: {type: Number},
   isMasterCardSupported: {type: Boolean, index: true, default: false}
 });
 

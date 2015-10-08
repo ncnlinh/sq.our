@@ -2,7 +2,8 @@ import {
   UserController,
   FlightSearchController,
   FlightController,
-  LocationSearchController
+  LocationSearchController,
+  PlaceController
 } from 'controllers';
 
 export default (app) => {
@@ -14,4 +15,8 @@ export default (app) => {
   app.post('/api/flight/queryAndCreate', FlightController.request.queryAndCreate);
   app.post('/api/flight/addUser', FlightController.request.addUser);
   app.post('/api/locationsearch', LocationSearchController.request.search);
+  app.post('/api/place/', PlaceController.request.getAll);
+  app.post('/api/place/get', PlaceController.request.get);
+  app.post('/api/place/query', PlaceController.request.query);
+  app.post('/api/place/queryAndCreate', PlaceController.request.queryAndCreate);
 };
