@@ -1,16 +1,12 @@
 #import "MainViewController.h"
 
-#import "QuickCloud.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "ContactsViewController.h"
-#import "AppointmentViewController.h"
-#import "TaskViewController.h"
-#import "SettingsViewController.h"
-#import "SyncContactsViewController.h"
+#import "FlightViewController.h"
+#import "ChatViewController.h"
+#import "PaymentViewController.h"
 #import "MenuViewController.h"
 #import "RootNavigationController.h"
-#import "QuickDeskHelper.h"
 
 @interface MainViewController()<MenuViewControllerDelegate>
 
@@ -37,17 +33,12 @@ static NSInteger const kOtherSectionIndex = 1;
   return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:FALSE withAnimation:UIStatusBarAnimationSlide];
-}
-
 - (void)initializeContent {
   // Main View Controllers
-  ContactsViewController *contactsViewController = [[ContactsViewController alloc] init];
-  AppointmentViewController *calendarViewController = [[AppointmentViewController alloc] init];
-  TaskViewController *taskViewController = [[TaskViewController alloc] init];
-  self.mainViewControllers = @[contactsViewController, calendarViewController, taskViewController];
+  FlightViewController *flightViewController = [[FlightViewController alloc] init];
+  ChatViewController *chatViewController = [[ChatViewController alloc] init];
+  PaymentViewController *paymentViewController = [[PaymentViewController alloc] init];
+  self.mainViewControllers = @[flightViewController, chatViewController, paymentViewController];
   
   self.selectedSection = kMainSectionIndex;
   self.selectedIndex = 0;
@@ -75,24 +66,7 @@ static NSInteger const kOtherSectionIndex = 1;
 }
 
 - (void)otherMenuItemSelected:(NSInteger)row {
-  _selectedSection = kOtherSectionIndex;
-  _selectedIndex = row;
-  
-  UIViewController *viewController;
-  if (_selectedIndex == 0) {
-    viewController = [[SyncContactsViewController alloc] init];
-  } else {
-    viewController = [[SettingsViewController alloc] init];
-  }
-  RootNavigationController *modalNavController = [[RootNavigationController alloc]
-                                                  initWithRootViewController:viewController];
-  modalNavController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-  modalNavController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-  [self.rootNavigationController presentViewController:modalNavController
-                                              animated:TRUE
-                                            completion:^{
-                                              [self hideMenuViewController];
-                                            }];
+  NSLog(@"Log Out");
 }
 
 @end

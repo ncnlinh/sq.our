@@ -1,5 +1,6 @@
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #import "MenuViewController.h"
 
@@ -7,9 +8,8 @@
 #import "UIColor+Helper.h"
 #import "UIFont+Helper.h"
 #import "UIView+Helper.h"
-#import "ExtendedUILabel.h"
-#import "IndicatorView.h"
-#import "Constant.h"
+#import "NSString+Helper.h"
+#import "Constants.h"
 
 @interface MenuViewController()<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,20 +26,14 @@ static CGFloat const kProfilePictureSize = 60;
 static CGFloat const kCellHeight = 60;
 
 static NSInteger const kMainMenuCellCount = 3;
-static NSInteger const kContactsCellIndex = 0;
-static NSInteger const kAppointmentCellIndex = 1;
-static NSInteger const kTaskCellIndex = 2;
+static NSInteger const kFlightCellIndex = 0;
+static NSInteger const KChatCellIndex = 1;
+static NSInteger const kPaymentCellIndex = 2;
 
-static NSInteger const kOtherMenuCellCount = 2;
-static NSInteger const kSyncCellIndex = 0;
-static NSInteger const kSettingsCellIndex = 1;
+static NSInteger const kOtherMenuCellCount = 1;
+static NSInteger const kLogOutCellIndex = 0;
 
 static NSString *const kSidebarMenuItemCellIdentifier = @"SidebarMenuItemCellIdentifier";
-
-static NSString *const kSpidergateScreenUrl = @"/actions/screenSpidergate";
-static NSString *const kSpidergateUnlinked = @"Does not exist";
-static NSString *const kSpidergateInvalidNumber = @"ERROR_NO_NUMBER_FOUND";
-static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
 
 @implementation MenuViewController
 
@@ -69,66 +63,22 @@ static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   if (self.nameLabel.text == nil || [self.nameLabel.text trim].length == 0) {
-    self.nameLabel.text = [QuickDeskHelper getUserName];
-    self.emailLabel.text = [QuickDeskHelper getUserEmail];
+    self.nameLabel.text = [FBSDKProfile currentProfile].name;
     NSInteger width = self.view.frame.size.width;
-    NSString *gravatarUrl = [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?s=%td&d=identicon&r=g",
-                             [[QuickDeskHelper getUserEmail] MD5hash], width];
-    [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:gravatarUrl]
+    NSString *avatarUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%td",
+                             [FBSDKProfile currentProfile].userID, width];
+    [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
                                 placeholderImage:nil];
-    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:gravatarUrl]
+    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
                          placeholderImage:nil];
   }
-  [self fetchSpidergateStatus];
 }
 
-- (void)fetchSpidergateStatus {
-  [self.statusLabel setBorderColor:[UIColor appSecondaryColor]];
-  [self.statusLabel setTextColor:[UIColor appSecondaryColor]];
-  [self.statusLabel setText:@"FETCHING..."];
-  
-  if (![QuickDeskHelper hasInternetConnection]) {
-    [self.statusLabel setBorderColor:[UIColor appWarningColor]];
-    [self.statusLabel setTextColor:[UIColor appWarningColor]];
-    [self.statusLabel setText:@"NO INTERNET CONNECTION"];
-  } else {
-    IndicatorView *indicator = [[IndicatorView alloc] initWithStyle:RTSpinKitViewStyleArc
-                                                              color:[UIColor whiteColor]
-                                                        spinnerSize:20];
-    [self.profileContainerView addSubview:indicator];
-    
-    [indicator mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.centerY.mas_equalTo(self.statusLabel.mas_centerY);
-      make.right.mas_equalTo(self.profileContainerView.mas_right).with.offset(-5);
-    }];
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@%@",
-                            [Constant getQuickCloudBaseUrl],
-                            [Constant getHoiioServiceUrl],
-                            kSpidergateScreenUrl];
-    [QCHttpRequest postWithUrl:requestUrl
-                          body:@{
-                                 @"numbers" : @[@"+6500000000"]
-                                 }
-                       success:^(id response) {
-                         [self.statusLabel setBorderColor:[UIColor appPrimaryColor]];
-                         [self.statusLabel setTextColor:[UIColor appPrimaryColor]];
-                         [self.statusLabel setText:@"SPIDERGATE AVAILABLE"];
-                         [indicator stopAnimatingWithAnimation];
-                       }
-                       failure:^(NSError *error) {
-                         [self.statusLabel setBorderColor:[UIColor appWarningColor]];
-                         [self.statusLabel setTextColor:[UIColor appWarningColor]];
-                         [self.statusLabel setText:@"SPIDERGATE UNAVAILABLE"];
-                         [indicator stopAnimatingWithAnimation];
-                       }
-     ];
-  }
-}
 
 - (void)configureProfile {
   NSInteger width = self.view.frame.size.width;
-  NSString *gravatarUrl = [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?s=%td&d=identicon&r=g",
-                           [[QuickDeskHelper getUserEmail] MD5hash], width];
+  NSString *avatarUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%td",
+                         [FBSDKProfile currentProfile].userID, width];
   self.profileContainerView = [[UIView alloc] init];
   [self.view addSubview:self.profileContainerView];
   
@@ -146,7 +96,7 @@ static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
   [self.profileContainerView addSubview:self.backgroundImageView];
   
   self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-  [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:gravatarUrl]
+  [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
                               placeholderImage:nil];
   
   [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -168,7 +118,7 @@ static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
   _profileImageView.contentMode = UIViewContentModeScaleAspectFill;
   [_profileImageView setCornerRadius:kProfilePictureSize / 2.0];
   _profileImageView.clipsToBounds = TRUE;
-  [_profileImageView sd_setImageWithURL:[NSURL URLWithString:gravatarUrl]
+  [_profileImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
                        placeholderImage:nil];
   
   [_profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -182,44 +132,13 @@ static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
   
   [self.nameLabel setFont:[UIFont mediumSecondaryFontWithSize:18.0]];
   [self.nameLabel setTextColor:[UIColor whiteColor]];
-  [self.nameLabel setText:[QuickDeskHelper getUserName]];
+  [self.nameLabel setText:[FBSDKProfile currentProfile].name];
   [self.nameLabel setTextAlignment:NSTextAlignmentCenter];
   
   [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(_profileImageView.mas_bottom).with.offset(10);
     make.centerX.mas_equalTo(self.profileContainerView.mas_centerX);
     make.width.mas_equalTo(self.profileContainerView.mas_width).with.offset(-10);
-  }];
-  
-  self.emailLabel = [[UILabel alloc] init];
-  [self.profileContainerView addSubview:self.emailLabel];
-  
-  [self.emailLabel setFont:[UIFont regularSecondaryFontWithSize:16.0]];
-  [self.emailLabel setTextColor:[UIColor whiteColor]];
-  [self.emailLabel setText:[QuickDeskHelper getUserEmail]];
-  [self.emailLabel setTextAlignment:NSTextAlignmentCenter];
-  
-  [self.emailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.mas_equalTo(self.nameLabel.mas_bottom).with.offset(5);
-    make.centerX.mas_equalTo(self.profileContainerView.mas_centerX);
-    make.width.mas_equalTo(self.profileContainerView.mas_width).with.offset(-10);
-  }];
-  
-  self.statusLabel = [[ExtendedUILabel alloc] initWithEdgeInsets:UIEdgeInsetsMake(5, 10, 5, 10)];
-  [self.profileContainerView addSubview:self.statusLabel];
-  
-  [self.statusLabel setTextColor:[UIColor whiteColor]];
-  [self.statusLabel setBackgroundColor:[UIColor appPrimaryColor]];
-  [self.statusLabel setFont:[UIFont mediumSecondaryFontWithSize:12]];
-  [self.statusLabel setTextAlignment:NSTextAlignmentCenter];
-  [self.statusLabel setCornerRadius:10.0];
-  [self.statusLabel setBackgroundColor:[UIColor clearColor]];
-  [self.statusLabel setBorderWidth:1.0];
-  [self.statusLabel setClipsToBounds:TRUE];
-  
-  [self.statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.centerX.mas_equalTo(self.profileContainerView.mas_centerX);
-    make.bottom.mas_equalTo(self.profileContainerView.mas_bottom).with.offset(-10);
   }];
 }
 
@@ -293,18 +212,16 @@ static NSString *const kSpidergateInavalability = @"ERROR_INVALID_USER";
   }
   
   if (tableView == self.mainMenuTableView) {
-    if (row == kContactsCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemContacts];
-    } else if (row == kTaskCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemTasks];
-    } else if (row == kAppointmentCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemAppointment];
+    if (row == kFlightCellIndex) {
+      [cell setMenuItemType:kSideBarMenuItemFlights];
+    } else if (row == KChatCellIndex) {
+      [cell setMenuItemType:kSideBarMenuItemChats];
+    } else if (row == kPaymentCellIndex) {
+      [cell setMenuItemType:kSideBarMenuItemPayment];
     }
   } else if (tableView == self.otherMenuTableView) {
-    if (row ==  kSettingsCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemSettings];
-    } else if (row == kSyncCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemSync];
+    if (row ==  kLogOutCellIndex) {
+      [cell setMenuItemType:kSideBarMenuItemLogOut];
     }
   }
   

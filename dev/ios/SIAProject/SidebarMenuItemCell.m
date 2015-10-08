@@ -67,25 +67,21 @@ static NSInteger const kTitleLabelIconSize = 16;
   NSString *title;
   FAKIcon *icon;
   switch (_menuItemType) {
-    case kSideBarMenuItemContacts:
-      title = @"Contacts";
+    case kSideBarMenuItemFlights:
+      title = @"Flights";
       icon = [FAKFontAwesome usersIconWithSize:kIconLabelIconSize];
       break;
-    case kSideBarMenuItemAppointment:
-      title = @"Appointments";
+    case kSideBarMenuItemChats:
+      title = @"Chats";
       icon = [FAKFontAwesome calendarOIconWithSize:kIconLabelIconSize];
       break;
-    case kSideBarMenuItemTasks:
-      title = @"Tasks";
+    case kSideBarMenuItemPayment:
+      title = @"Payment";
       icon = [FAKFontAwesome tasksIconWithSize:kIconLabelIconSize];
       break;
-    case kSideBarMenuItemSettings:
-      icon = [FAKFontAwesome cogIconWithSize:kIconLabelIconSize];
-      title = @"Settings";
-      break;
-    case kSideBarMenuItemSync:
+    case kSideBarMenuItemLogOut:
       icon = [FAKIonIcons loopIconWithSize:kIconLabelIconSize];
-      title = @"Import Address Book";
+      title = @"Log Out";
       break;
     default:
       NSAssert(false, @"Invalid menu item type");
