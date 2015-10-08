@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+#import "SideBarViewController.h"
+
+@interface MainViewController : SideBarViewController
 
 @end
