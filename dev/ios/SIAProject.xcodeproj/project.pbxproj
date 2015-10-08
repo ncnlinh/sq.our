@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5933491BC6967B00DEC827 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933481BC6967B00DEC827 /* Constants.m */; settings = {ASSET_TAGS = (); }; };
+		0F59334C1BC6968500DEC827 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59334B1BC6968500DEC827 /* HttpClient.m */; settings = {ASSET_TAGS = (); }; };
 		0F6E4BA41BC2B87500ADD31B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA31BC2B87500ADD31B /* main.m */; };
 		0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */; };
 		0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */; };
@@ -43,6 +45,9 @@
 		0F7170FD1BC68EFF00970A68 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170E91BC68EFF00970A68 /* OpenSans-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170FE1BC68EFF00970A68 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170EA1BC68EFF00970A68 /* OpenSans-Semibold.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170FF1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170EB1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf */; settings = {ASSET_TAGS = (); }; };
+		0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171011BC6912D00970A68 /* NSString+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0F7171051BC691D800970A68 /* ExtendedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171041BC691D800970A68 /* ExtendedUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		0F7171091BC694BD00970A68 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171081BC694BD00970A68 /* RootNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
@@ -50,6 +55,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F5933471BC6967B00DEC827 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0F5933481BC6967B00DEC827 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		0F59334A1BC6968500DEC827 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		0F59334B1BC6968500DEC827 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		0F6E4B9F1BC2B87500ADD31B /* SIAProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIAProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6E4BA31BC2B87500ADD31B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +111,12 @@
 		0F7170E91BC68EFF00970A68 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		0F7170EA1BC68EFF00970A68 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		0F7170EB1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		0F7171001BC6912D00970A68 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		0F7171011BC6912D00970A68 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		0F7171031BC691D800970A68 /* ExtendedUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedUILabel.h; sourceTree = "<group>"; };
+		0F7171041BC691D800970A68 /* ExtendedUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedUILabel.m; sourceTree = "<group>"; };
+		0F7171071BC694BD00970A68 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
+		0F7171081BC694BD00970A68 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
 		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
@@ -242,9 +257,19 @@
 			path = "Open Sans";
 			sourceTree = "<group>";
 		};
+		0F7171061BC694A700970A68 /* Shared Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F7171071BC694BD00970A68 /* RootNavigationController.h */,
+				0F7171081BC694BD00970A68 /* RootNavigationController.m */,
+			);
+			name = "Shared Controller";
+			sourceTree = "<group>";
+		};
 		0FBD2C361BC2C41900FA149B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F7171061BC694A700970A68 /* Shared Controller */,
 				0F7170C71BC689F600970A68 /* MenuViewController */,
 				0F7170B41BC686DE00970A68 /* SideBarViewController */,
 				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
@@ -266,12 +291,18 @@
 		0FBD2C3B1BC2DE7A00FA149B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0F5933471BC6967B00DEC827 /* Constants.h */,
+				0F5933481BC6967B00DEC827 /* Constants.m */,
 				0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */,
 				0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */,
 				0F7170A51BC5381000970A68 /* UIColor+Helper.h */,
 				0F7170A61BC5381000970A68 /* UIColor+Helper.m */,
 				0F7170CE1BC68B5100970A68 /* UIFont+Helper.h */,
 				0F7170CF1BC68B5100970A68 /* UIFont+Helper.m */,
+				0F7171001BC6912D00970A68 /* NSString+Helper.h */,
+				0F7171011BC6912D00970A68 /* NSString+Helper.m */,
+				0F59334A1BC6968500DEC827 /* HttpClient.h */,
+				0F59334B1BC6968500DEC827 /* HttpClient.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -289,6 +320,8 @@
 			children = (
 				0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */,
 				0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */,
+				0F7171031BC691D800970A68 /* ExtendedUILabel.h */,
+				0F7171041BC691D800970A68 /* ExtendedUILabel.m */,
 			);
 			name = "Extended Views";
 			sourceTree = "<group>";
@@ -434,9 +467,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F59334C1BC6968500DEC827 /* HttpClient.m in Sources */,
+				0F7171091BC694BD00970A68 /* RootNavigationController.m in Sources */,
 				0F7170BA1BC6870B00970A68 /* SidebarContainerViewController.m in Sources */,
 				0F7170B71BC686FC00970A68 /* SideBarViewController.m in Sources */,
 				0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */,
+				0F7171051BC691D800970A68 /* ExtendedUILabel.m in Sources */,
+				0F5933491BC6967B00DEC827 /* Constants.m in Sources */,
 				0F7170CA1BC68A0C00970A68 /* MenuViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
@@ -445,6 +482,7 @@
 				0F7170BD1BC687CE00970A68 /* UIViewController+SideBarViewController.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
+				0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
 				0F7170D01BC68B5100970A68 /* UIFont+Helper.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,

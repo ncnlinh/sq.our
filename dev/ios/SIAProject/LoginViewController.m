@@ -34,8 +34,6 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                error:(NSError *)error {
   if (result.token != NULL) {
     NSString *url = [NSString stringWithFormat:@"%@/api/login", [Constants apiUrl]];
-    NSLog(@"%@", url);
-    NSLog(@"%@", result.token.userID);
     [HttpClient postWithUrl:url body:@{@"facebookId": result.token.userID}]
     .then(^{
       AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
