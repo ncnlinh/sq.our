@@ -18,7 +18,6 @@
 @end
 
 static NSInteger const kMainSectionIndex = 0;
-static NSInteger const kOtherSectionIndex = 1;
 
 @implementation MainViewController
 

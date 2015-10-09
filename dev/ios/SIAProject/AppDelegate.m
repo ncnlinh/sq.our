@@ -1,7 +1,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 #import "AppDelegate.h"
 
+#import "RootNavigationController.h"
+#import "UIFont+Helper.h"
+#import "UIColor+Helper.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
 
@@ -15,6 +19,9 @@
   // Setup FB SDK
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
+  [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+  
+  [self configureAppearances];
   
   // Initialize window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -43,5 +50,27 @@
 - (void)setRootViewController:(UIViewController *)viewController {
   [self.window setRootViewController:viewController];
 }
+
+- (void)configureAppearances {
+  [self configureNavigationBarAppearance];
+}
+
+- (void)configureNavigationBarAppearance {
+  NSDictionary *attrs = @{
+                          NSFontAttributeName: [UIFont mediumPrimaryFontWithSize:18],
+                          NSForegroundColorAttributeName: [UIColor whiteColor]
+                          };
+  [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[RootNavigationController class]]]
+   setTitleTextAttributes:attrs];
+  [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[RootNavigationController class]]]
+   setBarTintColor:[UIColor appPrimaryColor]];
+  [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[RootNavigationController class]]]
+   setTintColor:[UIColor whiteColor]];
+}
+
+- (void)loadLocationInfo {
+  
+}
+
 
 @end

@@ -22,7 +22,7 @@
 
 @end
 
-static CGFloat const kProfilePictureSize = 60;
+static CGFloat const kProfilePictureSize = 130;
 static CGFloat const kCellHeight = 60;
 
 static NSInteger const kMainMenuCellCount = 3;
@@ -65,6 +65,7 @@ static NSString *const kSidebarMenuItemCellIdentifier = @"SidebarMenuItemCellIde
   if (self.nameLabel.text == nil || [self.nameLabel.text trim].length == 0) {
     self.nameLabel.text = [FBSDKProfile currentProfile].name;
     NSInteger width = self.view.frame.size.width;
+    NSLog(@"%@", [FBSDKProfile currentProfile].userID);
     NSString *avatarUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%td",
                              [FBSDKProfile currentProfile].userID, width];
     [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
@@ -123,7 +124,7 @@ static NSString *const kSidebarMenuItemCellIdentifier = @"SidebarMenuItemCellIde
   
   [_profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.profileContainerView.mas_centerX);
-    make.bottom.mas_equalTo(self.profileContainerView.mas_centerY).with.offset(-10);
+    make.top.mas_equalTo(self.profileContainerView.mas_top).with.offset(10);
     make.size.mas_equalTo(CGSizeMake(kProfilePictureSize, kProfilePictureSize));
   }];
   
