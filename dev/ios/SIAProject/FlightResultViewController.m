@@ -1,5 +1,7 @@
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "FlightResultViewController.h"
 
@@ -7,6 +9,8 @@
 #import "NSDate+Helper.h"
 #import "UIViewController+SideBarViewController.h"
 #import "FlightCell.h"
+#import "HttpClient.h"
+#import "Constants.h"
 
 @interface FlightResultViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,31 +28,36 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self stubFlightList];
+  flightList = @[];
   [self configureNavigationBar];
   [self configureFlightList];
 }
 
-- (void)stubFlightList {
-  flightList = @[
-                 @{
-                   @"flightNumbers": @"A123",
-                   @"startDate": [[NSDate new] isoDateString],
-                   @"startLocation": @"Singapore",
-                   @"endLocation": @"San Francisco"
-                   },
-                 @{
-                   @"flightNumbers": @"B238",
-                   @"startDate": [[NSDate new] isoDateString],
-                   @"startLocation": @"Viet Nam",
-                   @"endLocation": @"Los Angeles"
-                   }
-                 ];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getFlights];
 }
 
+- (void)getFlights {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/flightsearch", [Constants apiUrl]];
+  NSLog(@"%@", [self.date formattedDateWithFormat:@"YYYY-MM-dd"]);
+  [HttpClient postWithUrl:requestUrl body:@{
+                                            @"startDate": [self.date formattedDateWithFormat:@"YYYY-MM-dd"],
+                                            @"startLocation": self.startLocation,
+                                            @"endLocation": self.endLocation,
+                                            @"marketingAirlines": @"SQ",
+                                            @"currency": @"SGD"
+                                            }]
+  .then(^(NSArray *flights) {
+    flightList = flights;
+    [flightTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
+}
 
 - (void)configureNavigationBar {
-  //  [QuickDeskHelper removeNavigationBarOutline:self];
   self.navigationItem.title = @"RESULTS";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
@@ -99,7 +108,6 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
   }
   NSDictionary *flight = flightList[indexPath.row];
   [cell setFlightNumber:flight[@"flightNumbers"]];
-  [cell setStartDate:[NSDate isoDateFromString:flight[@"startDate"]]];
   [cell setStartLocation:flight[@"startLocation"]];
   [cell setEndLocation:flight[@"endLocation"]];
   
@@ -112,10 +120,31 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//  [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-//  FlightUserViewController *flightUserViewController = [[FlightUserViewController alloc] init];
-//  [self.navigationController pushViewController:flightUserViewController animated:TRUE];
-  // Select Flight
+  NSDictionary *flight = flightList[indexPath.row];
+  NSString *requestUrl1 = [NSString stringWithFormat:@"%@/api/flight/queryAndCreate", [Constants apiUrl]];
+  NSString *requestUrl2 = [NSString stringWithFormat:@"%@/api/flight/addUser", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl1 body:@{
+                                             @"flightNumbers": flight[@"flightNumbers"],
+                                             @"startLocation": flight[@"startLocation"],
+                                             @"endLocation": flight[@"endLocation"],
+                                             @"startDate": flight[@"startDate"],
+                                             @"endLocationName": self.endLocationName
+                                            }]
+  .then(^(NSDictionary *resultFlight) {
+    return [HttpClient postWithUrl:requestUrl2 body:@{
+                                               @"_id": resultFlight[@"_id"],
+                                               @"user": @{
+                                                   @"facebookId": [FBSDKAccessToken currentAccessToken].userID,
+                                                   @"purpose": @"Hi guys, let's have a blast"
+                                                 }
+                                               }];
+  })
+  .then(^{
+    [self.navigationController popToRootViewControllerAnimated:TRUE];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 @end

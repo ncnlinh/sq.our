@@ -1,5 +1,6 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "FlightUserViewController.h"
 
@@ -7,6 +8,8 @@
 #import "NSDate+Helper.h"
 #import "FlightInspireViewController.h"
 #import "UserCell.h"
+#import "HttpClient.h"
+#import "Constants.h"
 
 @interface FlightUserViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,24 +27,28 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self stubUserList];
+  userList = @[];
   [self configureNavigationBar];
   [self configureFlightList];
 }
 
-- (void)stubUserList {
-  userList = @[
-                 @{
-                   @"id": @"1",
-                   @"name": @"Bui Trong Nhan",
-                   @"purpose": @"To have fun haha"
-                   },
-                 @{
-                   @"id": @"2",
-                   @"name": @"Loli Otaku",
-                   @"purpose": @"~La la la~"
-                   }
-                 ];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getUserList];
+}
+
+- (void)getUserList {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/flight/users", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{
+                                            @"_id": self.flight[@"_id"]
+                                            }]
+  .then(^(NSArray *users) {
+    userList = users;
+    [userTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 - (void)configureNavigationBar {
@@ -60,7 +67,7 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
                                                                           action:nil];
   
   // Configure search button on the right of nav bar
-  FAKIcon *addIcon = [FAKIonIcons paperAirplaneIconWithSize:28];
+  FAKIcon *addIcon = [FAKIonIcons iosColorWandIconWithSize:28];
   [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
   UIImage *addIconImage = [addIcon imageWithSize:CGSizeMake(28, 28)];
   UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
@@ -113,9 +120,9 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
                              reuseIdentifier:kUserCellIdentifier];
   }
   NSDictionary *user = userList[indexPath.row];
-  [cell setUserId:user[@"id"]];
+  [cell setUserId:user[@"facebookId"]];
   [cell setName:user[@"name"]];
-  [cell setPurpose:user[@"purpose"]];
+  [cell setPurpose:self.flight[@"users"][indexPath.row][@"purpose"]];
   
   return cell;
 }
@@ -128,6 +135,7 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
 #pragma mark - Button Handler
 - (void)addButtonPressed:(UIButton *)sender {
   FlightInspireViewController *flightInspireViewController = [[FlightInspireViewController alloc] init];
+  flightInspireViewController.flight = self.flight;
   [self.navigationController pushViewController:flightInspireViewController animated:YES];
 }
 

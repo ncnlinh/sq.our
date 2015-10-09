@@ -23,6 +23,7 @@ FromLocationSelectViewControllerDelegate>
   NSDate *flightDate;
   NSString *fromLocation;
   NSString *toLocation;
+  NSString *toLocationName;
 }
 
 - (void)viewDidLoad {
@@ -32,6 +33,7 @@ FromLocationSelectViewControllerDelegate>
   flightDate = [NSDate date];
   fromLocation = nil;
   toLocation = nil;
+  toLocationName = nil;
   
   [self configureNavigationBar];
   [self configureFlightDateButton];
@@ -141,6 +143,10 @@ FromLocationSelectViewControllerDelegate>
     return;
   }
   FlightResultViewController *vc = [[FlightResultViewController alloc] init];
+  vc.date = flightDate;
+  vc.startLocation = fromLocation;
+  vc.endLocation = toLocation;
+  vc.endLocationName = toLocationName;
   [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -157,6 +163,7 @@ FromLocationSelectViewControllerDelegate>
 #pragma mark - To Location Selection View Controller Delegate
 - (void)toLocationSelected:(NSDictionary *)location {
   toLocation = location[@"airportCode"];
+  toLocationName = location[@"cityName"];
   [toLocationButton setTitle:location[@"cityName"] forState:UIControlStateNormal];
 }
 

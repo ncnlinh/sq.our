@@ -58,28 +58,11 @@ UserController.promise.createUser = (req, res) => {
 
 UserController.promise.addLikedPlace = (req, res) => {
   const {facebookId, flightId, placeId} = req.body;
-  return MongooseHelper.findOne(User, {facebookId: facebookId})
-    .then((user) => {
-      let flights = user.toObject().flights;
-      console.log(flights);
-      if (_.findIndex(flights, (chr) => {
-       if (chr) { return chr._id.toString() === flightId; }
-      }) !== -1) {
-        let index = _.findIndex(flights, (chr) => {
-         if (chr) { return chr._id.toString() === flightId; }
-        });
-        return MongooseHelper.findOne(Place, {_id: placeId})
-          .then((place) => {
-            if (_.findIndex(flights, (chr) => {
-             if (chr) { return chr._id.toString() === placeId; }
-            }) !== -1) {
-              flights[index].likedPlaces.push({_id: placeId});
-            }
-            
-            return MongooseHelper.findOneAndUpdate(User, {facebookId}, {flights}, {new: true}, {populate: 'flights.likedPlaces'})
-          });
-      }
-    });
+  return MongooseHelper.findOneAndUpdate(User, {facebookId: facebookId, 'flights._id': flightId}, {
+    $addToSet: {
+      'flights.$.likedPlaces': placeId
+    }
+  });
 };
 
 UserController.promise.addPassedPlace = (req, res) => {
@@ -108,13 +91,14 @@ UserController.promise.addPassedPlace = (req, res) => {
     });
 };
 
-
-
 UserController.promise.getFlights = (req, res) => {
   const {facebookId} = req.body;
   let resFlights = [];
   return MongooseHelper.findOne(User, {facebookId: facebookId})
   .then((user) => {
+    if (!user) {
+      return [];
+    }
     let flights = user.toObject().flights;
     return MongooseHelper.find(Flight)
       .then((allFlights) => {

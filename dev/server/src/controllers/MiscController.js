@@ -24,10 +24,11 @@ MiscController.promise.getCities = (req) => {
       }
       let airports = JSON.parse(data);
       airports = airports
-        .filter((airport) => airport.airportCode)
+        .filter((airport) => airport.airportCode && airport.cityName && airport.airportName && airport.airportName.toLowerCase().includes('international'))
         .map((airport) => {
           const row = {
             cityName: airport.cityName,
+            airportName: airport.airportName,
             airportCode: airport.airportCode
           };
 
@@ -38,7 +39,19 @@ MiscController.promise.getCities = (req) => {
         if(a.cityName.toLowerCase() > b.cityName.toLowerCase()) return 1;
         return 0;
       });
-      resolve(airports);
+      let initialArr = [];
+
+      const airportMap = airports.reduce((map, airport) => {
+        if (!map[airport.cityName[0].toLowerCase()]) {
+          map[airport.cityName[0].toLowerCase()] = [];
+          initialArr.push(airport.cityName[0].toUpperCase());
+        }
+        map[airport.cityName[0].toLowerCase()].push(airport);
+
+        return map;
+      }, {});
+
+      resolve({airports, airportMap, initialArr});
     });  
   });
 };

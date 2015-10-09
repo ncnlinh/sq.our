@@ -13,6 +13,8 @@
 @implementation ToLocationSelectViewController {
   UITableView *locationTableView;
   NSArray *locationList;
+  NSDictionary *locationMap;
+  NSArray *initialArr;
 }
 
 static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
@@ -20,6 +22,8 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 - (void)viewDidLoad {
   [super viewDidLoad];
   locationList = @[];
+  locationMap = @{};
+  initialArr = @[];
   [self configureTableView];
 }
 
@@ -31,8 +35,10 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 - (void) getLocations {
   NSString *requestUrl = [NSString stringWithFormat:@"%@/api/cities", [Constants apiUrl]];
   [HttpClient postWithUrl:requestUrl body:@{}]
-  .then(^(NSArray *cities) {
-    locationList = cities;
+  .then(^(NSDictionary *res) {
+    locationList = res[@"airports"];
+    locationMap = res[@"airportMap"];
+    initialArr = res[@"initialArr"];
     [locationTableView reloadData];
   })
   .catch(^(NSError *error) {
@@ -41,7 +47,7 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 }
 
 - (void)configureTableView {
-  locationTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+  locationTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
   locationTableView.dataSource = self;
   locationTableView.delegate = self;
   [self.view addSubview:locationTableView];
@@ -61,11 +67,15 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 
 #pragma mark - Table View Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+  return initialArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return locationList.count;
+  return ((NSArray *)locationMap[[(NSString *)initialArr[section] lowercaseString]]).count;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+  return initialArr;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,9 +84,14 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
     cell = [[LocationCell alloc] initWithStyle:UITableViewCellStyleDefault
                                reuseIdentifier:kLocationCellIdentifier];
   }
-  [cell setTitle:locationList[indexPath.row][@"cityName"]];
+  NSDictionary *row = locationMap[[(NSString *)initialArr[indexPath.section] lowercaseString]][indexPath.row];
+  [cell setTitle:[NSString stringWithFormat:@"%@ - %@", (NSString *)row[@"cityName"], (NSString *)row[@"airportName"]]];
   
   return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  return initialArr[section];
 }
 
 #pragma mark - Table View Delegate
@@ -85,8 +100,8 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSDictionary *selectedLocation = locationList[indexPath.row];
-  [self.delegate toLocationSelected:selectedLocation];
+  NSDictionary *row = locationMap[[(NSString *)initialArr[indexPath.section] lowercaseString]][indexPath.row];
+  [self.delegate toLocationSelected:row];
   [self.navigationController popViewControllerAnimated:TRUE];
 }
 

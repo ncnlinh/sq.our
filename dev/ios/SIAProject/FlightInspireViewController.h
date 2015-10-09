@@ -2,4 +2,6 @@
 
 @interface FlightInspireViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *flight;
+
 @end

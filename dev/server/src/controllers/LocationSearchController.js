@@ -30,7 +30,9 @@ LocationSearchController.request.search = (req, res) => {
       });
       ResponseHelper.success(res, data)
     })
-    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+    .catch((error) => {
+      ResponseHelper.error(res, error, DEBUG_ENV)
+    });
 }
 
 export default LocationSearchController;

@@ -7,16 +7,7 @@ const User = new Schema({
   flights: [
     {
       _id: {type: Schema.Types.ObjectId, ref: 'Flight', required: true, index: true},
-      likedPlaces:[
-        {
-          _id: {type: Schema.Types.ObjectId, ref: 'Place'}
-        }
-      ],
-      passedPlaces:[
-        {
-          _id: {type: Schema.Types.ObjectId, ref: 'Place'}
-        }
-      ]
+      likedPlaces:[{type: String}]
     }
   ]
 });

@@ -94,6 +94,10 @@
   [startDateLabel setText:[startDate formattedDateWithFormat:@"dd/MM/YYYY"]];
 }
 
+- (void)setStartDateString:(NSString *)startDate {
+  [startDateLabel setText:startDate];
+}
+
 - (void)setStartLocation:(NSString *)startLocation {
   _startLocation = startLocation;
   [startLocationLabel setText:startLocation];

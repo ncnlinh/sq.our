@@ -160,7 +160,9 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+  NSDictionary *flight = flightList[indexPath.row];
   FlightUserViewController *flightUserViewController = [[FlightUserViewController alloc] init];
+  flightUserViewController.flight = flight;
   [self.navigationController pushViewController:flightUserViewController animated:TRUE];
 }
 
