@@ -3,7 +3,9 @@
 #import "FlightSearchViewController.h"
 #import "FromLocationSelectViewController.h"
 #import "ToLocationSelectViewController.h"
+#import "UIColor+Helper.h"
 #import "DateModalViewController.h"
+#import "FlightResultViewController.h"
 #import "NSDate+Helper.h"
 
 @interface FlightSearchViewController()<DateModalViewControllerDelegate,
@@ -16,6 +18,7 @@ FromLocationSelectViewControllerDelegate>
   UIButton *flightDateButton;
   UIButton *fromLocationButton;
   UIButton *toLocationButton;
+  UIButton *searchButton;
   
   NSDate *flightDate;
   NSString *fromLocation;
@@ -30,9 +33,26 @@ FromLocationSelectViewControllerDelegate>
   fromLocation = nil;
   toLocation = nil;
   
+  [self configureNavigationBar];
   [self configureFlightDateButton];
   [self configureFromLocationButton];
   [self configureToLocationButton];
+  [self configureSearchButton];
+}
+
+- (void)configureNavigationBar {
+  self.navigationItem.title = @"SEARCH FLIGHTS";
+  self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
+  self.navigationController.navigationBar.translucent = FALSE;
+  self.edgesForExtendedLayout = UIRectEdgeNone;
+  self.extendedLayoutIncludesOpaqueBars = FALSE;
+  self.automaticallyAdjustsScrollViewInsets = FALSE;
+  
+  // Configure back button for subsequent views
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:nil
+                                                                          action:nil];
 }
 
 - (void)configureFlightDateButton {
@@ -81,6 +101,20 @@ FromLocationSelectViewControllerDelegate>
   }];
 }
 
+- (void)configureSearchButton {
+  searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  [self.view addSubview:searchButton];
+  
+  [searchButton setTitle:@"Search" forState:UIControlStateNormal];
+  [searchButton setBackgroundColor:[UIColor redColor]];
+  [searchButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  
+  [searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.mas_equalTo(self.view.mas_centerX);
+    make.top.mas_equalTo(toLocationButton.mas_bottom).with.offset(20);
+  }];
+}
+
 #pragma mark - Button Pressed
 - (void)fromLocationButtonPressed:(UIButton *)sender {
   FromLocationSelectViewController *selectViewController = [[FromLocationSelectViewController alloc] init];
@@ -100,6 +134,14 @@ FromLocationSelectViewControllerDelegate>
   dateModalVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
   dateModalVc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [self presentViewController:dateModalVc animated:TRUE completion:nil];
+}
+
+- (void)searchButtonPressed:(UIButton *)sender {
+  if (!fromLocation || !toLocation) {
+    return;
+  }
+  FlightResultViewController *vc = [[FlightResultViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Date Modal View Controller
