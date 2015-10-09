@@ -4,7 +4,7 @@
 
 #import "LoginViewController.h"
 
-#import "InspiredViewController.h"
+#import "MainViewController.h"
 #import "Constants.h"
 #import "HttpClient.h"
 #import "AppDelegate.h"
@@ -34,12 +34,10 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                error:(NSError *)error {
   if (result.token != NULL) {
     NSString *url = [NSString stringWithFormat:@"%@/api/login", [Constants apiUrl]];
-    NSLog(@"%@", url);
-    NSLog(@"%@", result.token.userID);
     [HttpClient postWithUrl:url body:@{@"facebookId": result.token.userID}]
     .then(^{
       AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-      InspiredViewController *mainViewController = [[InspiredViewController alloc] init];
+      MainViewController *mainViewController = [[MainViewController alloc] init];
       [appDelegate setRootViewController:mainViewController];
     })
     .catch(^(NSError *error) {

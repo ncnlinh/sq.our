@@ -33,5 +33,6 @@ pod 'pop', :git => 'https://github.com/facebook/pop.git'
 pod 'UICKeyChainStore', '~> 2.0.6'
 # Custom Views
 pod 'ZLSwipeableView', '~> 0.0.7'
+pod 'JSQMessagesViewController'
 
 end

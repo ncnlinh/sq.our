@@ -7,9 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F4AFE481BC6CEBA00012C0F /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE471BC6CEBA00012C0F /* NSDate+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0F4AFE4D1BC6D80700012C0F /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE4C1BC6D80700012C0F /* UserCell.m */; settings = {ASSET_TAGS = (); }; };
+		0F4AFE511BC6F90000012C0F /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F4AFE551BC6F9F000012C0F /* ChatGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F5933491BC6967B00DEC827 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933481BC6967B00DEC827 /* Constants.m */; settings = {ASSET_TAGS = (); }; };
+		0F59334C1BC6968500DEC827 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59334B1BC6968500DEC827 /* HttpClient.m */; settings = {ASSET_TAGS = (); }; };
+		0F59334F1BC6A76600DEC827 /* FlightUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59334E1BC6A76600DEC827 /* FlightUserViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F5933521BC6BFA400DEC827 /* FlightSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933511BC6BFA400DEC827 /* FlightSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F5933551BC6BFBF00DEC827 /* FlightResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933541BC6BFBF00DEC827 /* FlightResultViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F5933581BC6C01700DEC827 /* FlightInspireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933571BC6C01700DEC827 /* FlightInspireViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F59335B1BC6C02B00DEC827 /* FlightSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59335A1BC6C02B00DEC827 /* FlightSummaryViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0F5933611BC6C61F00DEC827 /* FlightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933601BC6C61F00DEC827 /* FlightCell.m */; settings = {ASSET_TAGS = (); }; };
 		0F6E4BA41BC2B87500ADD31B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA31BC2B87500ADD31B /* main.m */; };
 		0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */; };
-		0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */; };
 		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
 		0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A31BC534FD00970A68 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A61BC5381000970A68 /* UIColor+Helper.m */; settings = {ASSET_TAGS = (); }; };
@@ -43,6 +54,14 @@
 		0F7170FD1BC68EFF00970A68 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170E91BC68EFF00970A68 /* OpenSans-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170FE1BC68EFF00970A68 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170EA1BC68EFF00970A68 /* OpenSans-Semibold.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170FF1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170EB1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf */; settings = {ASSET_TAGS = (); }; };
+		0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171011BC6912D00970A68 /* NSString+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		0F7171051BC691D800970A68 /* ExtendedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171041BC691D800970A68 /* ExtendedUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		0F7171091BC694BD00970A68 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7171081BC694BD00970A68 /* RootNavigationController.m */; settings = {ASSET_TAGS = (); }; };
+		0FAC94521BC7DDAB008B4883 /* DateModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC94511BC7DDAB008B4883 /* DateModalViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FAC94551BC7DE1E008B4883 /* FromLocationSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC94541BC7DE1E008B4883 /* FromLocationSelectViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FAC94581BC7E1CD008B4883 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC94571BC7E1CD008B4883 /* LocationCell.m */; settings = {ASSET_TAGS = (); }; };
+		0FAC945B1BC7E3FC008B4883 /* ToLocationSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC945A1BC7E3FC008B4883 /* ToLocationSelectViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FAC945E1BC7E82E008B4883 /* ShadowedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAC945D1BC7E82E008B4883 /* ShadowedUIButton.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
@@ -50,12 +69,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F4AFE461BC6CEBA00012C0F /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		0F4AFE471BC6CEBA00012C0F /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		0F4AFE4B1BC6D80700012C0F /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		0F4AFE4C1BC6D80700012C0F /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		0F4AFE4F1BC6F90000012C0F /* PlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailViewController.h; sourceTree = "<group>"; };
+		0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewController.m; sourceTree = "<group>"; };
+		0F4AFE531BC6F9F000012C0F /* ChatGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatGroupViewController.h; sourceTree = "<group>"; };
+		0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatGroupViewController.m; sourceTree = "<group>"; };
+		0F5933471BC6967B00DEC827 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0F5933481BC6967B00DEC827 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		0F59334A1BC6968500DEC827 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		0F59334B1BC6968500DEC827 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		0F59334D1BC6A76600DEC827 /* FlightUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightUserViewController.h; sourceTree = "<group>"; };
+		0F59334E1BC6A76600DEC827 /* FlightUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightUserViewController.m; sourceTree = "<group>"; };
+		0F5933501BC6BFA400DEC827 /* FlightSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSearchViewController.h; sourceTree = "<group>"; };
+		0F5933511BC6BFA400DEC827 /* FlightSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSearchViewController.m; sourceTree = "<group>"; };
+		0F5933531BC6BFBF00DEC827 /* FlightResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightResultViewController.h; sourceTree = "<group>"; };
+		0F5933541BC6BFBF00DEC827 /* FlightResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightResultViewController.m; sourceTree = "<group>"; };
+		0F5933561BC6C01700DEC827 /* FlightInspireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightInspireViewController.h; sourceTree = "<group>"; };
+		0F5933571BC6C01700DEC827 /* FlightInspireViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightInspireViewController.m; sourceTree = "<group>"; };
+		0F5933591BC6C02B00DEC827 /* FlightSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSummaryViewController.h; sourceTree = "<group>"; };
+		0F59335A1BC6C02B00DEC827 /* FlightSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSummaryViewController.m; sourceTree = "<group>"; };
+		0F59335F1BC6C61F00DEC827 /* FlightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightCell.h; sourceTree = "<group>"; };
+		0F5933601BC6C61F00DEC827 /* FlightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightCell.m; sourceTree = "<group>"; };
 		0F6E4B9F1BC2B87500ADD31B /* SIAProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIAProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6E4BA31BC2B87500ADD31B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InspiredViewController.h; sourceTree = "<group>"; };
-		0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InspiredViewController.m; sourceTree = "<group>"; };
 		0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F6E4BB31BC2B87500ADD31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7170A21BC534FD00970A68 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -102,6 +143,22 @@
 		0F7170E91BC68EFF00970A68 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		0F7170EA1BC68EFF00970A68 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		0F7170EB1BC68EFF00970A68 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		0F7171001BC6912D00970A68 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		0F7171011BC6912D00970A68 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		0F7171031BC691D800970A68 /* ExtendedUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedUILabel.h; sourceTree = "<group>"; };
+		0F7171041BC691D800970A68 /* ExtendedUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedUILabel.m; sourceTree = "<group>"; };
+		0F7171071BC694BD00970A68 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
+		0F7171081BC694BD00970A68 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
+		0FAC94501BC7DDAB008B4883 /* DateModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModalViewController.h; sourceTree = "<group>"; };
+		0FAC94511BC7DDAB008B4883 /* DateModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModalViewController.m; sourceTree = "<group>"; };
+		0FAC94531BC7DE1E008B4883 /* FromLocationSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FromLocationSelectViewController.h; sourceTree = "<group>"; };
+		0FAC94541BC7DE1E008B4883 /* FromLocationSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FromLocationSelectViewController.m; sourceTree = "<group>"; };
+		0FAC94561BC7E1CD008B4883 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		0FAC94571BC7E1CD008B4883 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		0FAC94591BC7E3FC008B4883 /* ToLocationSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToLocationSelectViewController.h; path = Assets.xcassets/ToLocationSelectViewController.h; sourceTree = "<group>"; };
+		0FAC945A1BC7E3FC008B4883 /* ToLocationSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToLocationSelectViewController.m; path = Assets.xcassets/ToLocationSelectViewController.m; sourceTree = "<group>"; };
+		0FAC945C1BC7E82E008B4883 /* ShadowedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedUIButton.h; sourceTree = "<group>"; };
+		0FAC945D1BC7E82E008B4883 /* ShadowedUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedUIButton.m; sourceTree = "<group>"; };
 		0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helper.h"; sourceTree = "<group>"; };
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
@@ -124,6 +181,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F4AFE491BC6D32A00012C0F /* Flight User View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F59334D1BC6A76600DEC827 /* FlightUserViewController.h */,
+				0F59334E1BC6A76600DEC827 /* FlightUserViewController.m */,
+				0F4AFE4B1BC6D80700012C0F /* UserCell.h */,
+				0F4AFE4C1BC6D80700012C0F /* UserCell.m */,
+			);
+			name = "Flight User View Controller";
+			sourceTree = "<group>";
+		};
+		0F4AFE4A1BC6D5B600012C0F /* Flight Inspire View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F5933561BC6C01700DEC827 /* FlightInspireViewController.h */,
+				0F5933571BC6C01700DEC827 /* FlightInspireViewController.m */,
+			);
+			name = "Flight Inspire View Controller";
+			sourceTree = "<group>";
+		};
+		0F4AFE4E1BC6F88400012C0F /* Flight Summary View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F5933591BC6C02B00DEC827 /* FlightSummaryViewController.h */,
+				0F59335A1BC6C02B00DEC827 /* FlightSummaryViewController.m */,
+			);
+			name = "Flight Summary View Controller";
+			sourceTree = "<group>";
+		};
+		0F4AFE521BC6F92300012C0F /* Place Detail View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F4AFE4F1BC6F90000012C0F /* PlaceDetailViewController.h */,
+				0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */,
+			);
+			name = "Place Detail View Controller";
+			sourceTree = "<group>";
+		};
+		0F4AFE561BC6F9FE00012C0F /* Chat Group View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F4AFE531BC6F9F000012C0F /* ChatGroupViewController.h */,
+				0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */,
+			);
+			name = "Chat Group View Controller";
+			sourceTree = "<group>";
+		};
+		0F59335C1BC6C2BA00DEC827 /* Flight View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F7170BE1BC6891100970A68 /* FlightViewController.h */,
+				0F7170BF1BC6891100970A68 /* FlightViewController.m */,
+				0F5933531BC6BFBF00DEC827 /* FlightResultViewController.h */,
+				0F5933541BC6BFBF00DEC827 /* FlightResultViewController.m */,
+				0F59335F1BC6C61F00DEC827 /* FlightCell.h */,
+				0F5933601BC6C61F00DEC827 /* FlightCell.m */,
+			);
+			name = "Flight View Controller";
+			sourceTree = "<group>";
+		};
+		0F59335D1BC6C2C600DEC827 /* Flight Search View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F5933501BC6BFA400DEC827 /* FlightSearchViewController.h */,
+				0F5933511BC6BFA400DEC827 /* FlightSearchViewController.m */,
+				0FAC94531BC7DE1E008B4883 /* FromLocationSelectViewController.h */,
+				0FAC94541BC7DE1E008B4883 /* FromLocationSelectViewController.m */,
+				0FAC94591BC7E3FC008B4883 /* ToLocationSelectViewController.h */,
+				0FAC945A1BC7E3FC008B4883 /* ToLocationSelectViewController.m */,
+				0FAC94561BC7E1CD008B4883 /* LocationCell.h */,
+				0FAC94571BC7E1CD008B4883 /* LocationCell.m */,
+			);
+			name = "Flight Search View Controller";
+			sourceTree = "<group>";
+		};
 		0F6E4B961BC2B87500ADD31B = {
 			isa = PBXGroup;
 			children = (
@@ -242,23 +374,46 @@
 			path = "Open Sans";
 			sourceTree = "<group>";
 		};
+		0F7171061BC694A700970A68 /* Shared Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F7171071BC694BD00970A68 /* RootNavigationController.h */,
+				0F7171081BC694BD00970A68 /* RootNavigationController.m */,
+			);
+			name = "Shared Controller";
+			sourceTree = "<group>";
+		};
+		0FAC944F1BC7DD8F008B4883 /* Date Modal Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0FAC94501BC7DDAB008B4883 /* DateModalViewController.h */,
+				0FAC94511BC7DDAB008B4883 /* DateModalViewController.m */,
+			);
+			name = "Date Modal Controller";
+			sourceTree = "<group>";
+		};
 		0FBD2C361BC2C41900FA149B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0FAC944F1BC7DD8F008B4883 /* Date Modal Controller */,
+				0F7171061BC694A700970A68 /* Shared Controller */,
 				0F7170C71BC689F600970A68 /* MenuViewController */,
 				0F7170B41BC686DE00970A68 /* SideBarViewController */,
 				0F7170A21BC534FD00970A68 /* LoginViewController.h */,
 				0F7170A31BC534FD00970A68 /* LoginViewController.m */,
-				0F6E4BA81BC2B87500ADD31B /* InspiredViewController.h */,
-				0F6E4BA91BC2B87500ADD31B /* InspiredViewController.m */,
 				0F7170B11BC6862800970A68 /* MainViewController.h */,
 				0F7170B21BC6862800970A68 /* MainViewController.m */,
-				0F7170BE1BC6891100970A68 /* FlightViewController.h */,
-				0F7170BF1BC6891100970A68 /* FlightViewController.m */,
+				0F59335C1BC6C2BA00DEC827 /* Flight View Controller */,
+				0F59335D1BC6C2C600DEC827 /* Flight Search View Controller */,
+				0F4AFE491BC6D32A00012C0F /* Flight User View Controller */,
+				0F4AFE4A1BC6D5B600012C0F /* Flight Inspire View Controller */,
+				0F4AFE4E1BC6F88400012C0F /* Flight Summary View Controller */,
 				0F7170C41BC6893C00970A68 /* PaymentViewController.h */,
 				0F7170C51BC6893C00970A68 /* PaymentViewController.m */,
 				0F7170D11BC68E7900970A68 /* ChatViewController.h */,
 				0F7170D21BC68E7900970A68 /* ChatViewController.m */,
+				0F4AFE521BC6F92300012C0F /* Place Detail View Controller */,
+				0F4AFE561BC6F9FE00012C0F /* Chat Group View Controller */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -266,12 +421,20 @@
 		0FBD2C3B1BC2DE7A00FA149B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0F5933471BC6967B00DEC827 /* Constants.h */,
+				0F5933481BC6967B00DEC827 /* Constants.m */,
 				0FBD2C3C1BC2FA8F00FA149B /* UIView+Helper.h */,
 				0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */,
 				0F7170A51BC5381000970A68 /* UIColor+Helper.h */,
 				0F7170A61BC5381000970A68 /* UIColor+Helper.m */,
 				0F7170CE1BC68B5100970A68 /* UIFont+Helper.h */,
 				0F7170CF1BC68B5100970A68 /* UIFont+Helper.m */,
+				0F7171001BC6912D00970A68 /* NSString+Helper.h */,
+				0F7171011BC6912D00970A68 /* NSString+Helper.m */,
+				0F59334A1BC6968500DEC827 /* HttpClient.h */,
+				0F59334B1BC6968500DEC827 /* HttpClient.m */,
+				0F4AFE461BC6CEBA00012C0F /* NSDate+Helper.h */,
+				0F4AFE471BC6CEBA00012C0F /* NSDate+Helper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -289,6 +452,10 @@
 			children = (
 				0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */,
 				0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */,
+				0F7171031BC691D800970A68 /* ExtendedUILabel.h */,
+				0F7171041BC691D800970A68 /* ExtendedUILabel.m */,
+				0FAC945C1BC7E82E008B4883 /* ShadowedUIButton.h */,
+				0FAC945D1BC7E82E008B4883 /* ShadowedUIButton.m */,
 			);
 			name = "Extended Views";
 			sourceTree = "<group>";
@@ -434,23 +601,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F59334C1BC6968500DEC827 /* HttpClient.m in Sources */,
+				0F7171091BC694BD00970A68 /* RootNavigationController.m in Sources */,
+				0F5933521BC6BFA400DEC827 /* FlightSearchViewController.m in Sources */,
+				0F59334F1BC6A76600DEC827 /* FlightUserViewController.m in Sources */,
 				0F7170BA1BC6870B00970A68 /* SidebarContainerViewController.m in Sources */,
 				0F7170B71BC686FC00970A68 /* SideBarViewController.m in Sources */,
-				0F6E4BAA1BC2B87500ADD31B /* InspiredViewController.m in Sources */,
+				0F7171051BC691D800970A68 /* ExtendedUILabel.m in Sources */,
+				0F4AFE551BC6F9F000012C0F /* ChatGroupViewController.m in Sources */,
+				0F5933491BC6967B00DEC827 /* Constants.m in Sources */,
 				0F7170CA1BC68A0C00970A68 /* MenuViewController.m in Sources */,
+				0F4AFE511BC6F90000012C0F /* PlaceDetailViewController.m in Sources */,
+				0F59335B1BC6C02B00DEC827 /* FlightSummaryViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
 				0F7170B31BC6862800970A68 /* MainViewController.m in Sources */,
 				0F7170C01BC6891100970A68 /* FlightViewController.m in Sources */,
 				0F7170BD1BC687CE00970A68 /* UIViewController+SideBarViewController.m in Sources */,
+				0F5933551BC6BFBF00DEC827 /* FlightResultViewController.m in Sources */,
+				0FAC945E1BC7E82E008B4883 /* ShadowedUIButton.m in Sources */,
+				0F4AFE481BC6CEBA00012C0F /* NSDate+Helper.m in Sources */,
+				0FAC945B1BC7E3FC008B4883 /* ToLocationSelectViewController.m in Sources */,
+				0F5933611BC6C61F00DEC827 /* FlightCell.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
+				0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
 				0F7170D01BC68B5100970A68 /* UIFont+Helper.m in Sources */,
+				0F5933581BC6C01700DEC827 /* FlightInspireViewController.m in Sources */,
+				0FAC94551BC7DE1E008B4883 /* FromLocationSelectViewController.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,
+				0FAC94581BC7E1CD008B4883 /* LocationCell.m in Sources */,
 				0F7170D31BC68E7900970A68 /* ChatViewController.m in Sources */,
 				0F7170CD1BC68A8500970A68 /* SidebarMenuItemCell.m in Sources */,
+				0F4AFE4D1BC6D80700012C0F /* UserCell.m in Sources */,
 				0F7170C61BC6893C00970A68 /* PaymentViewController.m in Sources */,
+				0FAC94521BC7DDAB008B4883 /* DateModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

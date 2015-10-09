@@ -54,6 +54,9 @@ PODS:
   - FontAwesomeKit/Zocial (2.2.0):
     - FontAwesomeKit/Core
   - IQKeyboardManager (3.2.4)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - JTCalendar (2.1.4)
   - Mantle (2.0.5):
     - Mantle/extobjc (= 2.0.5)
@@ -120,6 +123,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4.6.0)
   - FontAwesomeKit (~> 2.2.0)
   - IQKeyboardManager (~> 3.2.4)
+  - JSQMessagesViewController
   - JTCalendar (~> 2.1.4)
   - Mantle (~> 2.0.2)
   - Masonry (~> 0.6.3)
@@ -149,6 +153,8 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   JTCalendar: 9b1352c7ec41cc26b19c189d6608ba48060a53d9
   Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
