@@ -4,8 +4,11 @@
 #import "FromLocationSelectViewController.h"
 #import "ToLocationSelectViewController.h"
 #import "DateModalViewController.h"
+#import "NSDate+Helper.h"
 
-@interface FlightSearchViewController()<DateModalViewControllerDelegate>
+@interface FlightSearchViewController()<DateModalViewControllerDelegate,
+ToLocationSelectViewControllerDelegate,
+FromLocationSelectViewControllerDelegate>
 
 @end
 
@@ -13,11 +16,19 @@
   UIButton *flightDateButton;
   UIButton *fromLocationButton;
   UIButton *toLocationButton;
+  
+  NSDate *flightDate;
+  NSString *fromLocation;
+  NSString *toLocation;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.view setBackgroundColor:[UIColor whiteColor]];
+  
+  flightDate = [NSDate date];
+  fromLocation = nil;
+  toLocation = nil;
   
   [self configureFlightDateButton];
   [self configureFromLocationButton];
@@ -91,11 +102,24 @@
 
 #pragma mark - Date Modal View Controller
 - (void)dateSelected:(NSDate *)date {
-  
+  flightDate = date;
+  [flightDateButton setTitle:[date formattedDateWithFormat:@"dd/MM/YY"] forState:UIControlStateNormal];
 }
 
 - (void)emptySelected {
-  
+  // No handle
+}
+
+#pragma mark - To Location Selection View Controller Delegate
+- (void)toLocationSelected:(NSString *)location {
+  toLocation = location;
+  [toLocationButton setTitle:toLocation forState:UIControlStateNormal];
+}
+
+#pragma mark - From Location Selection View Controller Delegate
+- (void)fromLocationSelected:(NSString *)location {
+  fromLocation = location;
+  [fromLocationButton setTitle:fromLocation forState:UIControlStateNormal];
 }
 
 @end
