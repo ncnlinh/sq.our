@@ -1,8 +1,10 @@
 #import <Masonry/Masonry.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <PromiseKit/PromiseKit.h>
 #import <ZLSwipeableView/ZLSwipeableView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
+#include <stdlib.h>
 
 #import "FlightInspireViewController.h"
 
@@ -16,69 +18,73 @@
 @interface FlightInspireViewController ()<ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
 @property (strong, nonatomic) ZLSwipeableView *swipeView;
-@property (strong, nonatomic) UIButton *rejectButton;
-@property (strong, nonatomic) UIButton *acceptButton;
 
 @end
 
 @implementation FlightInspireViewController {
   NSArray *places;
+  NSMutableArray *likePlaces;
+  NSMutableArray *unlikePlaces;
   
-  int index;
+  int index, currentIndex;
 }
-
-static NSInteger const kFAButtonSize = 50;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   index = -1;
+  currentIndex = 0;
   self.view.backgroundColor = [UIColor whiteGrayColor];
   places = @[];
-  [self stubData];
+  likePlaces = [NSMutableArray array];
+  unlikePlaces = [NSMutableArray array];
+  [self configureNavigationBar];
   [self initializeSwipeView];
-  [self initializeButtons];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getData];
 }
 
 - (void)getData {
   NSString *requestUrl = [NSString stringWithFormat:@"%@/api/locationSearch", [Constants apiUrl]];
   [HttpClient postWithUrl:requestUrl body:@{
-                                            @"term": @""
+                                            @"term": @"",
+                                            @"offset": [NSString stringWithFormat:@"%d", arc4random_uniform(50)],
+                                            @"location": self.flight[@"endLocationName"]
                                             }]
   .then(^(NSArray *arr) {
     places = arr;
+    if (places.count > 0) {
+      currentIndex = 0;
+      index = -1;
+    }
+    [self.swipeView loadNextSwipeableViewsIfNeeded];
   })
   .catch(^(NSError *error) {
     NSLog(@"%@", [error localizedDescription]);
   });
 }
 
-- (void)stubData {
-  places = @[
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               },
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               },
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               },
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               },
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               },
-             @{
-               @"image": @"http://www.jimcoda.com/data/photos/887_1_04p0198_golden_gate_bridge_fort_baker.jpg"
-               }
-             ];
+- (void)configureNavigationBar {
+  self.navigationItem.title = @"INSPIRE ME";
+  self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
+  self.navigationController.navigationBar.translucent = FALSE;
+  self.edgesForExtendedLayout = UIRectEdgeNone;
+  self.extendedLayoutIncludesOpaqueBars = FALSE;
+  self.automaticallyAdjustsScrollViewInsets = FALSE;
+  
+  // Configure back button for subsequent views
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:nil
+                                                                          action:nil];
 }
 
 - (void)initializeSwipeView {
   CGRect swipeViewBounds = self.view.bounds;
   swipeViewBounds.origin = CGPointMake(25, 50);
-  swipeViewBounds.size = CGSizeMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 2.0);
+  swipeViewBounds.size = CGSizeMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 1.5);
   
   self.swipeView = [[ZLSwipeableView alloc] initWithFrame:swipeViewBounds];
   self.swipeView.dataSource = self;
@@ -87,71 +93,32 @@ static NSInteger const kFAButtonSize = 50;
   [self.view addSubview:self.swipeView];
 }
 
-- (void)initializeButtons {
-  // Initialize button as the front-most UIControl
-  self.rejectButton = [ShadowedUIButton buttonWithType:UIButtonTypeCustom];
-  [self.view addSubview:self.rejectButton];
-  [self.view bringSubviewToFront:self.rejectButton];
-  
-  // Configure appearance & behaviors
-  [self.rejectButton setBackgroundColor:[UIColor redColor]];
-  [self.rejectButton setCornerRadius:kFAButtonSize / 2.0];
-  [self.rejectButton configureForShadows];
-  [self.rejectButton setShadowColor:[UIColor blackColor]];
-  [self.rejectButton setShadowOpacity:0.4];
-  [self.rejectButton setShadowOffset:CGSizeMake(0.0, 2.0)];
-  [self.rejectButton setShadowRadius:3.0];
-  [self.rejectButton addTarget:self
-                           action:@selector(rejectButtonPressed:)
-                 forControlEvents:UIControlEventTouchUpInside];
-  FAKIcon *addIcon = [FAKIonIcons plusRoundIconWithSize:25];
-  [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-  [self.rejectButton setAttributedTitle:[addIcon attributedString] forState:UIControlStateNormal];
-  
-  // Configure layout
-  [self.rejectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.right.mas_equalTo(self.view.mas_centerX).with.offset(-50);
-    make.top.mas_equalTo(self.swipeView.mas_bottom).with.offset(20);
-    make.size.mas_equalTo(CGSizeMake(kFAButtonSize, kFAButtonSize));
-  }];
-  
-  // Initialize button as the front-most UIControl
-  self.acceptButton = [ShadowedUIButton buttonWithType:UIButtonTypeCustom];
-  [self.view addSubview:self.acceptButton];
-  [self.view bringSubviewToFront:self.acceptButton];
-  
-  // Configure appearance & behaviors
-  [self.acceptButton setBackgroundColor:[UIColor greenColor]];
-  [self.acceptButton setCornerRadius:kFAButtonSize / 2.0];
-  [self.acceptButton configureForShadows];
-  [self.acceptButton setShadowColor:[UIColor blackColor]];
-  [self.acceptButton setShadowOpacity:0.4];
-  [self.acceptButton setShadowOffset:CGSizeMake(0.0, 2.0)];
-  [self.acceptButton setShadowRadius:3.0];
-  [self.acceptButton addTarget:self
-                        action:@selector(acceptButtonPressed:)
-              forControlEvents:UIControlEventTouchUpInside];
-  FAKIcon *acceptIcon = [FAKIonIcons plusRoundIconWithSize:25];
-  [acceptIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-  [self.acceptButton setAttributedTitle:[acceptIcon attributedString] forState:UIControlStateNormal];
-  
-  // Configure layout
-  [self.acceptButton mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.mas_equalTo(self.view.mas_centerX).with.offset(50);
-    make.top.mas_equalTo(self.swipeView.mas_bottom).with.offset(20);
-    make.size.mas_equalTo(CGSizeMake(kFAButtonSize, kFAButtonSize));
-  }];
-
-}
-
 #pragma mark - SwipableViewDelegate
 - (void)swipeableView:(ZLSwipeableView *)swipeableView
          didSwipeView:(UIView *)view
           inDirection:(ZLSwipeableViewDirection)direction {
   if (direction == ZLSwipeableViewDirectionLeft) {
-    
+    [unlikePlaces addObject:places[currentIndex]];
   } else if (direction == ZLSwipeableViewDirectionRight) {
+    [likePlaces addObject:places[currentIndex]];
+    NSString *requestUrl1 = [NSString stringWithFormat:@"%@/api/place/queryAndCreate", [Constants apiUrl]];
+    NSString *requestUrl2 = [NSString stringWithFormat:@"%@/api/user/likePlace", [Constants apiUrl]];
+    [HttpClient postWithUrl:requestUrl1 body:places[currentIndex]]
+    .then(^(NSDictionary *place) {
+      return [HttpClient postWithUrl:requestUrl2 body:@{
+                                                 @"facebookId": [FBSDKAccessToken currentAccessToken].userID,
+                                                 @"flightId": self.flight[@"_id"],
+                                                 @"placeId": place[@"yelpId"]
+                                                 }];
+    })
+    .catch(^(NSError *error) {
+      NSLog(@"%@", [error localizedDescription]);
+    });
     
+  }
+  currentIndex++;
+  if (currentIndex >= places.count) {
+    [self.navigationController popViewControllerAnimated:YES];
   }
 }
 
@@ -159,16 +126,6 @@ static NSInteger const kFAButtonSize = 50;
        didCancelSwipe:(UIView *)view {
   
 }
-
-#pragma mark - Reject Button Pressed
-- (void)rejectButtonPressed:(UIButton *)rejectButton {
-  [self.swipeView swipeTopViewToLeft];
-}
-
-- (void)acceptButtonPressed:(UIButton *)acceptButton {
-  [self.swipeView swipeTopViewToRight];
-}
-
 
 #pragma mark - SwipableViewDataSource
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
@@ -191,11 +148,22 @@ static NSInteger const kFAButtonSize = 50;
   
   imageView.contentMode = UIViewContentModeScaleAspectFill;
   imageView.clipsToBounds = TRUE;
-  [imageView sd_setImageWithURL:currentPlace[@"image"]
+  [imageView sd_setImageWithURL:currentPlace[@"imageUrl"]
                        placeholderImage:nil];
-  
   [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.mas_equalTo(cardView);
+  }];
+  
+  UILabel *nameLabel = [[UILabel alloc] init];
+  [cardView addSubview:nameLabel];
+  
+  [nameLabel setText:currentPlace[@"name"]];
+  [nameLabel setBackgroundColor:[UIColor whiteColor]];
+  [nameLabel setTextAlignment:NSTextAlignmentCenter];
+  [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.mas_equalTo(cardView.mas_centerX);
+    make.width.mas_equalTo(cardView.mas_width);
+    make.bottom.mas_equalTo(imageView.mas_bottom);
   }];
   
   return cardView;

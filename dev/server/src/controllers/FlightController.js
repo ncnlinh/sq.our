@@ -10,24 +10,17 @@ const FlightController = {
   promise: {}
 };
 
-
-FlightController.request.get = (req, res) => {
-  FlightController.promise.get(req)
-    .then((user) => ResponseHelper.success(res, user))
+FlightController.request.findFlightsForUser = (req, res) => {
+  FlightController.promise.findFlightsForUser(req)
+    .then((flights) => ResponseHelper.success(res, flights))
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
-};
+}
 
-FlightController.request.getAll = (req, res) => {
-  FlightController.promise.getAll(req)
-    .then((user) => ResponseHelper.success(res, user))
+FlightController.request.findUsersForFlight = (req, res) => {
+  FlightController.promise.findUsersForFlight(req)
+    .then((users) => ResponseHelper.success(res, users))
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
-};
-
-FlightController.request.query = (req, res) => {
-  FlightController.promise.query(req)
-    .then((user) => ResponseHelper.success(res, user))
-    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
-};
+}
 
 FlightController.request.queryAndCreate = (req, res) => {
   FlightController.promise.queryAndCreate(req)
@@ -40,31 +33,27 @@ FlightController.request.addUser = (req, res) => {
     .then((user) => ResponseHelper.success(res, user))
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
 };
-  
- 
-FlightController.promise.get = (req, res) => {
+
+//-----------------------------------------------------------------------------//
+
+FlightController.promise.findFlightsForUser = (req) => {
+  const {facebookId} = req.body;
+  return Promise.resolve(Flight.find({'users.facebookId': facebookId}).exec());
+}
+
+FlightController.promise.findUsersForFlight = (req) => {
   const {_id} = req.body;
-  return Promise.resolve(Flight.findOne({_id}).populate('users').exec((err, users) => {console.log (users)}))
-    .then(MongooseHelper.checkExists)
-
-};
-
-FlightController.promise.getAll = (req, res) => {
-  const {_id} = req.body;
-  return Promise.resolve(Flight.find().exec())
-  //.populate('users').exec((err, users) => {console.log (users)})
-    .then(MongooseHelper.checkExists)
-};
-
-FlightController.promise.query = (req, res) => {
-  const {flightNumbers, startLocation, endLocation, startDate} = req.body;
-  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate}).populate('users').exec((err, users) => {console.log (users)}))
-    .then(MongooseHelper.checkExists)
-};
+  return Promise.resolve(Flight.findById(_id).exec())
+    .then((flight) => {
+      const facebookIds = flight.users.map(user => user.facebookId);
+      return Promise.resolve(User.find({facebookId: {
+        $in: facebookIds
+      }}).exec());
+    });
+}
 
 FlightController.promise.queryAndCreate = (req, res) => {
   const {flightNumbers, startLocation, endLocation, startDate, endLocationName} = req.body;
-  console.log(endLocationName);
   return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate, endLocationName}).exec())
     .then(MongooseHelper.checkExists)
     .catch(() => {
