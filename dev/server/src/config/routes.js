@@ -4,7 +4,8 @@ import {
   FlightController,
   LocationSearchController,
   PlaceController,
-  MiscController
+  MiscController,
+  PaymentController
 } from 'controllers';
 
 export default (app) => {
@@ -21,4 +22,9 @@ export default (app) => {
   app.post('/api/user/likedPlaces', UserController.request.getLikedPlaces);
   app.post('/api/user/passedPlaces', UserController.request.getPassedPlaces);
   app.post('/api/cities', MiscController.request.getCities);
+  app.post('/api/payment/transfer', PaymentController.request.transfer);
+  app.post('/api/payment/cardMapCreate', PaymentController.request.cardMapCreate);
+  app.post('/api/payment/cardMapInquire', PaymentController.request.cardMapInquire);
+  app.post('/api/payment/cardMapUpdate', PaymentController.request.cardMapUpdate);
+  app.post('/api/payment/checkEligibility', PaymentController.request.checkEligibility);
 };
