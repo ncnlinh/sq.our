@@ -3,7 +3,8 @@ import _ from 'lodash';
 
 import {MongooseHelper, ResponseHelper} from '../helpers';
 import {Mastercard} from './ApiHelper/';
-
+import {PaymentRequest} from '../models';
+import {ClientError} from '../helpers/errors';
 const DEBUG_ENV = 'PaymentController';
 
 const PaymentController = {
@@ -24,18 +25,24 @@ PaymentController.request.transfer = (req, res) => {
     })
     .catch((error) => {
       let errorMessage
-      if (error.Errors.Error[0].Description) {
-        errorMessage = error.Errors.Error[0].Description[0];
-      } else {
-        let details = error.Errors.Error[0].Details[0].Detail;
-        for (let i in details) {
-          if (details[i].Name[0] === "ResponseDescription"){
-            errorMessage= details[i].Value[0];
-            break
+      if (error.Errors) {
+
+        if (error.Errors.Error[0].Description) {
+          errorMessage = error.Errors.Error[0].Description[0];
+        } else {
+          let details = error.Errors.Error[0].Details[0].Detail;
+          for (let i in details) {
+            if (details[i].Name[0] === "ResponseDescription"){
+              errorMessage= details[i].Value[0];
+              break
+            }
           }
         }
+
+      } else {
+        errorMessage = error.message;
       }
-      ResponseHelper.error(res, errorMessage, DEBUG_ENV)
+      ResponseHelper.error(res, new ClientError(errorMessage), DEBUG_ENV)
     });
 };
 
@@ -71,4 +78,43 @@ PaymentController.request.checkEligibility = (req, res) => {
     })
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
 };
+
+PaymentController.request.ask = (req, res) => {
+  PaymentController.promise.ask(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+}
+
+PaymentController.promise.ask = (req, res) => {
+  const {requestUser, receivingAccountNumber, receivedUser, amount, reason} = req.body;
+  return MongooseHelper.create(PaymentRequest, {requestUser, receivingAccountNumber, receivedUser, amount, reason, status: "Unpaid"})
+}
+
+PaymentController.request.view = (req, res) => {
+  PaymentController.promise.view(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+}
+
+PaymentController.promise.view = (req, res) => {
+  const {facebookId} = req.body;
+  return MongooseHelper.find(PaymentRequest, {receivedUser: facebookId});
+}
+
+PaymentController.request.pay = (req, res) => {
+  PaymentController.promise.pay(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+}
+
+PaymentController.promise.pay = (req, res) => {
+  const {_id, sendingAccountNumber} = req.body;
+  return MongooseHelper.findOne(PaymentRequest, {_id: _id})
+  .then((request)=> {
+    return PaymentController.request.transfer({body:{sendingAccountNumber: sendingAccountNumber, receivingAccountNumber: request.receivingAccountNumber, amount: request.amount}})
+    .then((message)=>{
+      return MongooseHelper.findOneAndUpdate(PaymentRequest, {_id: _id}, {sendingAccountNumber: sendingAccountNumber, status: "Paid"}, {new: true});
+    })
+  })
+}
 export default PaymentController;
