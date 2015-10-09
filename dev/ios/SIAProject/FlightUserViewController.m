@@ -5,6 +5,7 @@
 #import "FlightUserViewController.h"
 
 #import "UIColor+Helper.h"
+#import "FlightSummaryViewController.h"
 #import "NSDate+Helper.h"
 #import "FlightInspireViewController.h"
 #import "UserCell.h"
@@ -130,6 +131,15 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
 #pragma mark - Table View Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+  NSDictionary *user = userList[indexPath.row];
+  FlightSummaryViewController *flightSummaryViewController = [[FlightSummaryViewController alloc] init];
+  flightSummaryViewController.flight = self.flight;
+  flightSummaryViewController.facebookId = user[@"facebookId"];
+  [self.navigationController pushViewController:flightSummaryViewController animated:TRUE];
 }
 
 #pragma mark - Button Handler

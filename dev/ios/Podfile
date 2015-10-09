@@ -25,8 +25,6 @@ pod 'JTCalendar', '~> 2.1.4'
 pod 'SpinKit', '~> 1.2.0'
 # Image Cache
 pod 'SDWebImage', '~> 3.7.3'
-# Keyboard Manager
-pod 'IQKeyboardManager', '~> 3.2.4'
 # Animation Framework (Use repo while waiting for next release to get latest bug fixes)
 pod 'pop', :git => 'https://github.com/facebook/pop.git'
 # Keychain Store

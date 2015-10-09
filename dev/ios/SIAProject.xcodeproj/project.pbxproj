@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F4AFE481BC6CEBA00012C0F /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE471BC6CEBA00012C0F /* NSDate+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0F4AFE4D1BC6D80700012C0F /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE4C1BC6D80700012C0F /* UserCell.m */; settings = {ASSET_TAGS = (); }; };
-		0F4AFE511BC6F90000012C0F /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F4AFE551BC6F9F000012C0F /* ChatGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F5933491BC6967B00DEC827 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933481BC6967B00DEC827 /* Constants.m */; settings = {ASSET_TAGS = (); }; };
 		0F59334C1BC6968500DEC827 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59334B1BC6968500DEC827 /* HttpClient.m */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +64,8 @@
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
+		0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA81791BC866F700B04138 /* FlightSummaryCell.m */; settings = {ASSET_TAGS = (); }; };
+		0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0408A1BC878FF0025BA71 /* ChatData.m */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +74,6 @@
 		0F4AFE471BC6CEBA00012C0F /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		0F4AFE4B1BC6D80700012C0F /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		0F4AFE4C1BC6D80700012C0F /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
-		0F4AFE4F1BC6F90000012C0F /* PlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailViewController.h; sourceTree = "<group>"; };
-		0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewController.m; sourceTree = "<group>"; };
 		0F4AFE531BC6F9F000012C0F /* ChatGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatGroupViewController.h; sourceTree = "<group>"; };
 		0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatGroupViewController.m; sourceTree = "<group>"; };
 		0F5933471BC6967B00DEC827 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -164,6 +163,10 @@
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
 		0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowUIView.h; sourceTree = "<group>"; };
 		0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowUIView.m; sourceTree = "<group>"; };
+		0FEA81781BC866F700B04138 /* FlightSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSummaryCell.h; sourceTree = "<group>"; };
+		0FEA81791BC866F700B04138 /* FlightSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSummaryCell.m; sourceTree = "<group>"; };
+		0FF040891BC878FF0025BA71 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
+		0FF0408A1BC878FF0025BA71 /* ChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatData.m; sourceTree = "<group>"; };
 		9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SIAProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B51EC0270BAFE7466A981B /* Pods-SIAProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.release.xcconfig"; sourceTree = "<group>"; };
 		FD4A5FCB7C2F67FF416C8F72 /* Pods-SIAProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIAProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIAProject/Pods-SIAProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,17 +209,10 @@
 			children = (
 				0F5933591BC6C02B00DEC827 /* FlightSummaryViewController.h */,
 				0F59335A1BC6C02B00DEC827 /* FlightSummaryViewController.m */,
+				0FEA81781BC866F700B04138 /* FlightSummaryCell.h */,
+				0FEA81791BC866F700B04138 /* FlightSummaryCell.m */,
 			);
 			name = "Flight Summary View Controller";
-			sourceTree = "<group>";
-		};
-		0F4AFE521BC6F92300012C0F /* Place Detail View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0F4AFE4F1BC6F90000012C0F /* PlaceDetailViewController.h */,
-				0F4AFE501BC6F90000012C0F /* PlaceDetailViewController.m */,
-			);
-			name = "Place Detail View Controller";
 			sourceTree = "<group>";
 		};
 		0F4AFE561BC6F9FE00012C0F /* Chat Group View Controller */ = {
@@ -224,6 +220,8 @@
 			children = (
 				0F4AFE531BC6F9F000012C0F /* ChatGroupViewController.h */,
 				0F4AFE541BC6F9F000012C0F /* ChatGroupViewController.m */,
+				0FF040891BC878FF0025BA71 /* ChatData.h */,
+				0FF0408A1BC878FF0025BA71 /* ChatData.m */,
 			);
 			name = "Chat Group View Controller";
 			sourceTree = "<group>";
@@ -412,7 +410,6 @@
 				0F7170C51BC6893C00970A68 /* PaymentViewController.m */,
 				0F7170D11BC68E7900970A68 /* ChatViewController.h */,
 				0F7170D21BC68E7900970A68 /* ChatViewController.m */,
-				0F4AFE521BC6F92300012C0F /* Place Detail View Controller */,
 				0F4AFE561BC6F9FE00012C0F /* Chat Group View Controller */,
 			);
 			name = Controllers;
@@ -611,7 +608,6 @@
 				0F4AFE551BC6F9F000012C0F /* ChatGroupViewController.m in Sources */,
 				0F5933491BC6967B00DEC827 /* Constants.m in Sources */,
 				0F7170CA1BC68A0C00970A68 /* MenuViewController.m in Sources */,
-				0F4AFE511BC6F90000012C0F /* PlaceDetailViewController.m in Sources */,
 				0F59335B1BC6C02B00DEC827 /* FlightSummaryViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
@@ -630,12 +626,14 @@
 				0F7170D01BC68B5100970A68 /* UIFont+Helper.m in Sources */,
 				0F5933581BC6C01700DEC827 /* FlightInspireViewController.m in Sources */,
 				0FAC94551BC7DE1E008B4883 /* FromLocationSelectViewController.m in Sources */,
+				0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,
 				0FAC94581BC7E1CD008B4883 /* LocationCell.m in Sources */,
 				0F7170D31BC68E7900970A68 /* ChatViewController.m in Sources */,
 				0F7170CD1BC68A8500970A68 /* SidebarMenuItemCell.m in Sources */,
 				0F4AFE4D1BC6D80700012C0F /* UserCell.m in Sources */,
 				0F7170C61BC6893C00970A68 /* PaymentViewController.m in Sources */,
+				0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */,
 				0FAC94521BC7DDAB008B4883 /* DateModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
