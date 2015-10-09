@@ -141,6 +141,9 @@ FromLocationSelectViewControllerDelegate>
     return;
   }
   FlightResultViewController *vc = [[FlightResultViewController alloc] init];
+  vc.date = flightDate;
+  vc.startLocation = fromLocation;
+  vc.endLocation = toLocation;
   [self.navigationController pushViewController:vc animated:YES];
 }
 

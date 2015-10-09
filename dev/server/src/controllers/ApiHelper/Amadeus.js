@@ -18,6 +18,9 @@ Amadeus.services.search = (origin, destination, departure_date, include_airlines
     .query(queryData)
     .then((res)=> {
       return Promise.resolve(JSON.parse(res.text));
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 
