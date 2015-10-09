@@ -10,13 +10,14 @@ const Amadeus = {
 };
 
 
-Amadeus.services.search = (origin, destination, departure_date, include_airlines, currency) => {
+Amadeus.services.search = (origin, destination, departure_date, include_airlines=null, currency='SGD') => {
   const apikey = key.AMADEUS_API_KEY;
-  const queryData = {apikey, origin, destination, departure_date, include_airlines, currency};
+  const queryData = {apikey, origin, destination, departure_date, currency};
+  include_airlines ? (queryData.include_airlines = include_airlines) : null;
   return request.post(endpoint.AMADEUS_SEARCH)
     .query(queryData)
     .then((res)=> {
-      return JSON.parse(res.text);
+      return Promise.resolve(JSON.parse(res.text));
     });
 };
 

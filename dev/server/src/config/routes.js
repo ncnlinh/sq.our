@@ -19,4 +19,7 @@ export default (app) => {
   app.post('/api/place/get', PlaceController.request.get);
   app.post('/api/place/query', PlaceController.request.query);
   app.post('/api/place/queryAndCreate', PlaceController.request.queryAndCreate);
+  app.post('/api/user/likePlace', UserController.request.addLikedPlace);
+  app.post('/api/user/passPlace', UserController.request.addPassedPlace);
+  app.post('/api/user/flights', UserController.request.getFlights);
 };

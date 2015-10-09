@@ -61,11 +61,11 @@ PlaceController.promise.query = (req, res) => {
 };
 
 PlaceController.promise.queryAndCreate = (req, res) => {
-  const {location, name, category, description, lat, lon} = req.body;
+  const {location, name, imageUrl, address, yelpId, category, description, latitude, longitude} = req.body;
   return Promise.resolve(Place.findOne({location, name, category}).exec())
     .then(MongooseHelper.checkExists)
     .catch(() => {
-      return MongooseHelper.create(Place, {location, name, category, description, lat, lon});
+      return MongooseHelper.create(Place, {location, name, imageUrl, address, yelpId, category, description, latitude, longitude});
     })
 };
 

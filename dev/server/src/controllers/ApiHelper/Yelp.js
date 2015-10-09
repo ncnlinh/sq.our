@@ -23,7 +23,7 @@ const randomString = (length) => {
 const consumerSecret = key.YELP_CONSUMER_SECRET;
 const tokenSecret = key.YELP_TOKEN_SECRET;
 
-Yelp.services.search = (term, location, limit, offset, category_filter) => {
+Yelp.services.search = (term, location, limit='20', offset='0', category_filter='') => {
   const oauth = {
     oauth_consumer_key: key.YELP_CONSUMER_KEY,
     oauth_token: key.YELP_TOKEN,
@@ -41,7 +41,7 @@ Yelp.services.search = (term, location, limit, offset, category_filter) => {
   return request.get(url)
     .query(queryParameter)
     .then((res)=> {
-      return JSON.parse(res.text);
+      return Promise.resolve(JSON.parse(res.text));
     });
 };
 

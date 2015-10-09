@@ -9,12 +9,8 @@ const Flight = new Schema({
   endLocation: {type: String, required: true, index: true},
   users: [
     {
-      user: {
-        _id: {type: Schema.Types.ObjectId, required: true, index: true, unique: true},
-        facebookId: {type: String, required: true, index: true, unique: true},
-        name: {type: String, required: true, index: true},
-        bankAccount: {type: String, index: true}
-      },
+      _id: {type: Schema.Types.ObjectId, required: true, index: true, unique: true},
+      facebookId: {refs: 'User', type: String, required: true, index: true, unique: true},
       purpose: {type: String}
     }
   ]
