@@ -60,7 +60,7 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
                                                                           action:nil];
   
   // Configure search button on the right of nav bar
-  FAKIcon *addIcon = [FAKIonIcons paperAirplaneIconWithSize:28];
+  FAKIcon *addIcon = [FAKIonIcons iosColorWandIconWithSize:28];
   [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
   UIImage *addIconImage = [addIcon imageWithSize:CGSizeMake(28, 28)];
   UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];

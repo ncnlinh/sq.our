@@ -1,4 +1,5 @@
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 #import <ZLSwipeableView/ZLSwipeableView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
@@ -9,6 +10,8 @@
 #import "ShadowedUIButton.h"
 #import "ShadowUIView.h"
 #import "UIView+Helper.h"
+#import "Constants.h"
+#import "HttpClient.h"
 
 @interface FlightInspireViewController ()<ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
@@ -20,6 +23,7 @@
 
 @implementation FlightInspireViewController {
   NSArray *places;
+  
   int index;
 }
 
@@ -27,11 +31,25 @@ static NSInteger const kFAButtonSize = 50;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor whiteGrayColor];
-  [self stubData];
   index = -1;
+  self.view.backgroundColor = [UIColor whiteGrayColor];
+  places = @[];
+  [self stubData];
   [self initializeSwipeView];
   [self initializeButtons];
+}
+
+- (void)getData {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/locationSearch", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{
+                                            @"term": @""
+                                            }]
+  .then(^(NSArray *arr) {
+    places = arr;
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 - (void)stubData {

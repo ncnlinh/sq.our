@@ -115,6 +115,9 @@ UserController.promise.getFlights = (req, res) => {
   let resFlights = [];
   return MongooseHelper.findOne(User, {facebookId: facebookId})
   .then((user) => {
+    if (!user) {
+      return [];
+    }
     let flights = user.toObject().flights;
     return MongooseHelper.find(Flight)
       .then((allFlights) => {

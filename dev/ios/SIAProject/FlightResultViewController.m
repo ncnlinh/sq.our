@@ -1,3 +1,4 @@
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <Masonry/Masonry.h>
 #import <PromiseKit/PromiseKit.h>
@@ -107,7 +108,6 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
   }
   NSDictionary *flight = flightList[indexPath.row];
   [cell setFlightNumber:flight[@"flightNumbers"]];
-  [cell setStartDate:[NSDate isoDateFromString:flight[@"startDate"]]];
   [cell setStartLocation:flight[@"startLocation"]];
   [cell setEndLocation:flight[@"endLocation"]];
   
@@ -120,7 +120,31 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  NSDictionary *flight = flightList[indexPath.row];
+  NSString *requestUrl1 = [NSString stringWithFormat:@"%@/api/flight/queryAndCreate", [Constants apiUrl]];
+  NSString *requestUrl2 = [NSString stringWithFormat:@"%@/api/flight/addUser", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl1 body:@{
+                                             @"flightNumbers": flight[@"flightNumbers"],
+                                             @"startLocation": flight[@"startLocation"],
+                                             @"endLocation": flight[@"endLocation"],
+                                             @"startDate": flight[@"startDate"],
+                                             @"endLocationName": self.endLocationName
+                                            }]
+  .then(^(NSDictionary *resultFlight) {
+    return [HttpClient postWithUrl:requestUrl2 body:@{
+                                               @"_id": resultFlight[@"_id"],
+                                               @"user": @{
+                                                   @"facebookId": [FBSDKAccessToken currentAccessToken].userID,
+                                                   @"purpose": @"Hi guys, let's have a blast"
+                                                 }
+                                               }];
+  })
+  .then(^{
+    [self.navigationController popToRootViewControllerAnimated:TRUE];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 @end

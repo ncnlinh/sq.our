@@ -63,12 +63,12 @@ FlightController.promise.query = (req, res) => {
 };
 
 FlightController.promise.queryAndCreate = (req, res) => {
-  const {flightNumbers, startLocation, endLocation, startDate} = req.body;
-  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate})
-    .populate('users').exec((err, users) => {console.log (users)}))
+  const {flightNumbers, startLocation, endLocation, startDate, endLocationName} = req.body;
+  console.log(endLocationName);
+  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate, endLocationName}).exec())
     .then(MongooseHelper.checkExists)
     .catch(() => {
-      return MongooseHelper.create(Flight, {flightNumbers, startLocation, endLocation, startDate, users:[]});
+      return MongooseHelper.create(Flight, {flightNumbers, startLocation, endLocation, startDate, endLocationName, users:[]});
     })
 };
 
