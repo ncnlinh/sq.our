@@ -1,8 +1,11 @@
 #import <JSQMessagesViewController/JSQMessage.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "ChatGroupViewController.h"
 #import "ChatData.h"
+#import "HttpClient.h"
+#import "Constants.h"
 
 @implementation ChatGroupViewController {
   ChatData *data;
@@ -22,6 +25,30 @@
   data = [[ChatData alloc] init];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self requestData];
+}
+
+- (void)requestData {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/group", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{
+                                            @"flightId": self.flight[@"_id"],
+                                            @"placeId": self.place[@"yelpId"]
+                                            }]
+  .then(^(NSDictionary *group) {
+    NSArray *chats = group[@"chat"];
+    for (NSUInteger i = data.messages.count; i < chats.count; i++) {
+      JSQMessage *message = [[JSQMessage alloc] initWithSenderId:chats[i][@"by"]
+                                               senderDisplayName:@""
+                                                            date:[NSDate date]
+                                                            text:chats[i][@"message"]];
+      [data.messages addObject:message];
+    }
+    [self finishSendingMessageAnimated:YES];
+  });
+}
+
 #pragma mark - JSQMessagesViewController method overrides
 
 - (void)didPressSendButton:(UIButton *)button
@@ -35,6 +62,25 @@
                                                         text:text];
   
   [data.messages addObject:message];
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/group/addChat", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{
+                                            @"flightId": self.flight[@"_id"],
+                                            @"placeId": self.place[@"yelpId"],
+                                            @"chat": @{
+                                                @"by": [FBSDKAccessToken currentAccessToken].userID,
+                                                @"message": text
+                                                }
+                                            }]
+  .then(^(NSDictionary *group) {
+    NSArray *chats = group[@"chat"];
+    for (NSUInteger i = data.messages.count; i < chats.count; i++) {
+      JSQMessage *message = [[JSQMessage alloc] initWithSenderId:chats[i][@"by"]
+                                               senderDisplayName:@""
+                                                            date:[NSDate date]
+                                                            text:chats[i][@"message"]];
+      [data.messages addObject:message];
+    }
+  });
   [self finishSendingMessageAnimated:YES];
 }
 

@@ -2,7 +2,6 @@
 
 @implementation ChatViewController
 
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self stubData];

@@ -5,7 +5,8 @@ import {
   LocationSearchController,
   PlaceController,
   MiscController,
-  PaymentController
+  PaymentController,
+  GroupController
 } from 'controllers';
 
 export default (app) => {
@@ -23,6 +24,8 @@ export default (app) => {
   app.post('/api/user/likedPlaces', UserController.request.getLikedPlaces);
   app.post('/api/user/passedPlaces', UserController.request.getPassedPlaces);
   app.post('/api/cities', MiscController.request.getCities);
+  app.post('/api/group', GroupController.request.getChatMessages);
+  app.post('/api/group/addChat', GroupController.request.addChatMessage);
   app.post('/api/payment/transfer', PaymentController.request.transfer);
   app.post('/api/payment/cardMapCreate', PaymentController.request.cardMapCreate);
   app.post('/api/payment/cardMapInquire', PaymentController.request.cardMapInquire);
