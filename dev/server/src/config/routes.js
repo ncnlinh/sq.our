@@ -14,6 +14,7 @@ export default (app) => {
   app.post('/api/flight/queryAndCreate', FlightController.request.queryAndCreate);
   app.post('/api/flight/addUser', FlightController.request.addUser);
   app.post('/api/locationsearch', LocationSearchController.request.search);
+  app.post('/api/places', PlaceController.request.getPlaces);
   app.post('/api/place/queryAndCreate', PlaceController.request.queryAndCreate);
   app.post('/api/user/likePlace', UserController.request.addLikedPlace);
   app.post('/api/user/passPlace', UserController.request.addPassedPlace);

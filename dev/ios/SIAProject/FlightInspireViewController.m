@@ -84,7 +84,7 @@
 - (void)initializeSwipeView {
   CGRect swipeViewBounds = self.view.bounds;
   swipeViewBounds.origin = CGPointMake(25, 50);
-  swipeViewBounds.size = CGSizeMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 1.5);
+  swipeViewBounds.size = CGSizeMake(self.view.bounds.size.width - 50, self.view.bounds.size.height / 1.3);
   
   self.swipeView = [[ZLSwipeableView alloc] initWithFrame:swipeViewBounds];
   self.swipeView.dataSource = self;
