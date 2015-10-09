@@ -31,4 +31,7 @@ export default (app) => {
   app.post('/api/payment/cardMapInquire', PaymentController.request.cardMapInquire);
   app.post('/api/payment/cardMapUpdate', PaymentController.request.cardMapUpdate);
   app.post('/api/payment/checkEligibility', PaymentController.request.checkEligibility);
+  app.post('/api/payment/ask', PaymentController.request.ask);
+  app.post('/api/payment/view', PaymentController.request.view);
+  app.post('/api/payment/pay', PaymentController.request.pay);
 };
