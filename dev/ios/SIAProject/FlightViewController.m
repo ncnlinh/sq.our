@@ -1,8 +1,12 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "FlightViewController.h"
 
+#import "HttpClient.h"
+#import "Constants.h"
 #import "UIColor+Helper.h"
 #import "NSDate+Helper.h"
 #import "FlightUserViewController.h"
@@ -26,27 +30,29 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self stubFlightList];
+  flightList = @[];
   [self configureGesture];
   [self configureNavigationBar];
   [self configureFlightList];
 }
 
-- (void)stubFlightList {
-  flightList = @[
-                 @{
-                   @"flightNumbers": @"A123",
-                   @"startDate": [[NSDate new] isoDateString],
-                   @"startLocation": @"Singapore",
-                   @"endLocation": @"San Francisco"
-                   },
-                 @{
-                   @"flightNumbers": @"B238",
-                   @"startDate": [[NSDate new] isoDateString],
-                   @"startLocation": @"Viet Nam",
-                   @"endLocation": @"Los Angeles"
-                   }
-                 ];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getFlightList];
+}
+
+- (void)getFlightList {
+  NSString *url = [NSString stringWithFormat:@"%@/api/user/flights", [Constants apiUrl]];
+  [HttpClient postWithUrl:url body:@{
+                                      @"facebookId": [FBSDKAccessToken currentAccessToken].userID
+                                      }]
+  .then(^(NSArray *flights) {
+    flightList = flights;
+    [flightTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 - (void)configureGesture {

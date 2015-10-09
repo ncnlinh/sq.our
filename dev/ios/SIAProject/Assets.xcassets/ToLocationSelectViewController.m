@@ -69,7 +69,9 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+  NSString *selectedLocation = locationList[indexPath.row];
+  [self.delegate toLocationSelected:selectedLocation];
+  [self.navigationController popViewControllerAnimated:TRUE];
 }
 
 
