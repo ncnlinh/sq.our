@@ -32,17 +32,25 @@
 - (void) loginButton:(FBSDKLoginButton *)loginButton
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                error:(NSError *)error {
-  if (result.token != NULL) {
+  if ([FBSDKAccessToken currentAccessToken]) {
     NSString *url = [NSString stringWithFormat:@"%@/api/login", [Constants apiUrl]];
-    [HttpClient postWithUrl:url body:@{@"facebookId": result.token.userID}]
-    .then(^{
-      AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-      MainViewController *mainViewController = [[MainViewController alloc] init];
-      [appDelegate setRootViewController:mainViewController];
-    })
-    .catch(^(NSError *error) {
-      NSLog(@"%@", [error localizedDescription]);
-    });
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                  initWithGraphPath:[NSString stringWithFormat:@"/%@", [FBSDKAccessToken currentAccessToken].userID]
+                                  parameters: @{}
+                                  HTTPMethod:@"GET"];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                          id result,
+                                          NSError *error) {
+      [HttpClient postWithUrl:url body:@{@"facebookId": [FBSDKAccessToken currentAccessToken].userID, @"name": result[@"name"]}]
+      .then(^{
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        MainViewController *mainViewController = [[MainViewController alloc] init];
+        [appDelegate setRootViewController:mainViewController];
+      })
+      .catch(^(NSError *error) {
+        NSLog(@"%@", [error localizedDescription]);
+      });
+    }];
   }
 }
 
