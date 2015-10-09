@@ -84,11 +84,13 @@ FromLocationSelectViewControllerDelegate>
 #pragma mark - Button Pressed
 - (void)fromLocationButtonPressed:(UIButton *)sender {
   FromLocationSelectViewController *selectViewController = [[FromLocationSelectViewController alloc] init];
+  selectViewController.delegate = self;
   [self.navigationController pushViewController:selectViewController animated:YES];
 }
 
 - (void)toLocationButtonPressed:(UIButton *)sender {
   ToLocationSelectViewController *selectViewController = [[ToLocationSelectViewController alloc] init];
+  selectViewController.delegate = self;
   [self.navigationController pushViewController:selectViewController animated:YES];
 }
 
@@ -111,15 +113,15 @@ FromLocationSelectViewControllerDelegate>
 }
 
 #pragma mark - To Location Selection View Controller Delegate
-- (void)toLocationSelected:(NSString *)location {
-  toLocation = location;
-  [toLocationButton setTitle:toLocation forState:UIControlStateNormal];
+- (void)toLocationSelected:(NSDictionary *)location {
+  toLocation = location[@"airportCode"];
+  [toLocationButton setTitle:location[@"cityName"] forState:UIControlStateNormal];
 }
 
 #pragma mark - From Location Selection View Controller Delegate
-- (void)fromLocationSelected:(NSString *)location {
-  fromLocation = location;
-  [fromLocationButton setTitle:fromLocation forState:UIControlStateNormal];
+- (void)fromLocationSelected:(NSDictionary *)location {
+  fromLocation = location[@"airportCode"];
+  [fromLocationButton setTitle:location[@"cityName"] forState:UIControlStateNormal];
 }
 
 @end

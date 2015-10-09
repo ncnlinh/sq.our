@@ -3,6 +3,6 @@ export default {
   FlightController: require('./FlightController'),
   FlightSearchController: require('./FlightSearchController'),
   LocationSearchController: require('./LocationSearchController'),
-  PlaceController: require('./PlaceController')
-
+  PlaceController: require('./PlaceController'),
+  MiscController: require('./MiscController')
 };
