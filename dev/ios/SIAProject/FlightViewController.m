@@ -63,7 +63,6 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 }
 
 - (void)configureNavigationBar {
-//  [QuickDeskHelper removeNavigationBarOutline:self];
   self.navigationItem.title = @"FLIGHTS";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
