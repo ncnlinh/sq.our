@@ -1,7 +1,10 @@
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "ToLocationSelectViewController.h"
 #import "LocationCell.h"
+#import "HttpClient.h"
+#import "Constants.h"
 
 @interface ToLocationSelectViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,12 +19,25 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  locationList = @[];
   [self configureTableView];
-  [self stubData];
 }
 
-- (void) stubData {
-  locationList = @[@"Arizona", @"Singapore", @"San Francisco"];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getLocations];
+}
+
+- (void) getLocations {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/cities", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{}]
+  .then(^(NSArray *cities) {
+    locationList = cities;
+    [locationTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 - (void)configureTableView {
@@ -30,7 +46,7 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
   locationTableView.delegate = self;
   [self.view addSubview:locationTableView];
   
-  [locationTableView registerClass:[UITableViewCell class]
+  [locationTableView registerClass:[LocationCell class]
             forCellReuseIdentifier:kLocationCellIdentifier];
   
   [locationTableView setBackgroundColor:[UIColor whiteColor]];
@@ -56,9 +72,9 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
   LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:kLocationCellIdentifier];
   if (cell == nil) {
     cell = [[LocationCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                  reuseIdentifier:kLocationCellIdentifier];
+                               reuseIdentifier:kLocationCellIdentifier];
   }
-  [cell setTitle:locationList[indexPath.row]];
+  [cell setTitle:locationList[indexPath.row][@"cityName"]];
   
   return cell;
 }
@@ -69,10 +85,9 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *selectedLocation = locationList[indexPath.row];
+  NSDictionary *selectedLocation = locationList[indexPath.row];
   [self.delegate toLocationSelected:selectedLocation];
   [self.navigationController popViewControllerAnimated:TRUE];
 }
-
 
 @end

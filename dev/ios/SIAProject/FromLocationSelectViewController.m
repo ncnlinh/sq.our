@@ -1,8 +1,11 @@
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "FromLocationSelectViewController.h"
 
+#import "Constants.h"
 #import "LocationCell.h"
+#import "HttpClient.h"
 
 @interface FromLocationSelectViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -17,12 +20,25 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  locationList = @[];
   [self configureTableView];
-  [self stubData];
 }
 
-- (void) stubData {
-  locationList = @[@"Arizona", @"Singapore", @"San Francisco"];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self getLocations];
+}
+
+- (void) getLocations {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/cities", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{}]
+  .then(^(NSArray *cities) {
+    locationList = cities;
+    [locationTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@", [error localizedDescription]);
+  });
 }
 
 - (void)configureTableView {
@@ -59,7 +75,7 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
     cell = [[LocationCell alloc] initWithStyle:UITableViewCellStyleDefault
                              reuseIdentifier:kLocationCellIdentifier];
   }
-  [cell setTitle:locationList[indexPath.row]];
+  [cell setTitle:locationList[indexPath.row][@"cityName"]];
   
   return cell;
 }
@@ -70,7 +86,7 @@ static NSString *const kLocationCellIdentifier = @"LocationCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *selectedLocation = locationList[indexPath.row];
+  NSDictionary *selectedLocation = locationList[indexPath.row];
   [self.delegate fromLocationSelected:selectedLocation];
   [self.navigationController popViewControllerAnimated:TRUE];
 }

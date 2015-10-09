@@ -2,7 +2,7 @@
 
 @protocol ToLocationSelectViewControllerDelegate <NSObject>
 
-- (void)toLocationSelected:(NSString *)location;
+- (void)toLocationSelected:(NSDictionary *)location;
 
 @end
 
