@@ -35,6 +35,18 @@ UserController.request.getFlights = (req, res) => {
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
 };
 
+UserController.request.getLikedPlaces = (req, res) => {
+  UserController.promise.getLikedPlaces(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+};
+
+UserController.request.getPassedPlaces = (req, res) => {
+  UserController.promise.getPassedPlaces(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+};
+
 UserController.promise.createUser = (req, res) => {
   const {facebookId, name} = req.body;
   return Promise.resolve(User.findOne({facebookId}).exec())
@@ -49,29 +61,7 @@ UserController.promise.addLikedPlace = (req, res) => {
   return MongooseHelper.findOne(User, {facebookId: facebookId})
     .then((user) => {
       let flights = user.toObject().flights;
-      if (_.findIndex(flights, (chr) => {
-       if (chr) { return chr._id.toString() === flightId; }
-      }) !== undefined) {
-        let index = _.findIndex(flights, (chr) => {
-         if (chr) { return chr._id.toString() === flightId; }
-        });
-        return MongooseHelper.findOne(Place, {_id: placeId})
-          .then((place) => {
-            if (_.findIndex(flights[index].likedPlace), {_id: placeId} === -1) {
-              flights[index].likedPlace.push({_id: placeId});
-            }
-            return MongooseHelper.findOneAndUpdate(User, {facebookId}, {flights}, {new: true}, {populate: 'flights.likedPlace'})
-          });
-      }
-    });
-};
-
-
-UserController.promise.addPassedPlace = (req, res) => {
-  const {facebookId, flightId, placeId} = req.body;
-  return MongooseHelper.findOne(User, {facebookId: facebookId})
-    .then((user) => {
-      let flights = user.toObject().flights;
+      console.log(flights);
       if (_.findIndex(flights, (chr) => {
        if (chr) { return chr._id.toString() === flightId; }
       }) !== -1) {
@@ -80,14 +70,45 @@ UserController.promise.addPassedPlace = (req, res) => {
         });
         return MongooseHelper.findOne(Place, {_id: placeId})
           .then((place) => {
-            if (_.findIndex(flights[index].passedPlace), {_id: placeId} === -1) {
-              flights[index].passedPlace.push({_id: placeId});
+            if (_.findIndex(flights, (chr) => {
+             if (chr) { return chr._id.toString() === placeId; }
+            }) !== -1) {
+              flights[index].likedPlaces.push({_id: placeId});
             }
-            return MongooseHelper.findOneAndUpdate(User, {facebookId}, {flights}, {new: true}, {populate: 'flights.passedPlace'})
+            
+            return MongooseHelper.findOneAndUpdate(User, {facebookId}, {flights}, {new: true}, {populate: 'flights.likedPlaces'})
           });
       }
     });
 };
+
+UserController.promise.addPassedPlace = (req, res) => {
+  const {facebookId, flightId, placeId} = req.body;
+  return MongooseHelper.findOne(User, {facebookId: facebookId})
+    .then((user) => {
+      let flights = user.toObject().flights;
+      console.log(flights);
+      if (_.findIndex(flights, (chr) => {
+       if (chr) { return chr._id.toString() === flightId; }
+      }) !== -1) {
+        let index = _.findIndex(flights, (chr) => {
+         if (chr) { return chr._id.toString() === flightId; }
+        });
+        return MongooseHelper.findOne(Place, {_id: placeId})
+          .then((place) => {
+            if (_.findIndex(flights, (chr) => {
+             if (chr) { return chr._id.toString() === placeId; }
+            }) !== -1) {
+              flights[index].passedPlaces.push({_id: placeId});
+            }
+            
+            return MongooseHelper.findOneAndUpdate(User, {facebookId}, {flights}, {new: true}, {populate: 'flights.passedPlaces'})
+          });
+      }
+    });
+};
+
+
 
 UserController.promise.getFlights = (req, res) => {
   const {facebookId} = req.body;
@@ -103,7 +124,60 @@ UserController.promise.getFlights = (req, res) => {
         return Promise.resolve(flights);
       })
   })
+};
 
+
+UserController.promise.getLikedPlaces = (req, res) => {
+  const {facebookId, flightId} = req.body;
+  let resFlights = [];
+  return MongooseHelper.findOne(User, {facebookId: facebookId})
+  .then((user) => {
+    let flights = user.toObject().flights;
+    if (_.findIndex(flights, (chr) => {
+       if (chr) { return chr._id.toString() === flightId; }
+      }) !== -1) {
+        let index = _.findIndex(flights, (chr) => {
+         if (chr) { return chr._id.toString() === flightId; }
+        });
+        let flight=flights[index];
+        console.log(flight);
+        let places=flight.likedPlaces;
+        return MongooseHelper.find(Place)
+          .then((allPlaces) => {
+            places = places.map((place) => {
+              return allPlaces[_.findIndex(allPlaces, {_id: place._id})];
+            })
+            return Promise.resolve(places);
+          })
+      }
+  })
+};
+
+
+UserController.promise.getPassedPlaces = (req, res) => {
+  const {facebookId, flightId} = req.body;
+  let resFlights = [];
+  return MongooseHelper.findOne(User, {facebookId: facebookId})
+  .then((user) => {
+    let flights = user.toObject().flights;
+    if (_.findIndex(flights, (chr) => {
+       if (chr) { return chr._id.toString() === flightId; }
+      }) !== -1) {
+        let index = _.findIndex(flights, (chr) => {
+         if (chr) { return chr._id.toString() === flightId; }
+        });
+        let flight=flights[index];
+        console.log(flight);
+        let places=flight.passedPlaces;
+        return MongooseHelper.find(Place)
+          .then((allPlaces) => {
+            places = places.map((place) => {
+              return allPlaces[_.findIndex(allPlaces, {_id: place._id})];
+            })
+            return Promise.resolve(places);
+          })
+      }
+  })
 };
 
 export default UserController;

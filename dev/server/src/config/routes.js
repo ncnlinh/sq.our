@@ -22,4 +22,6 @@ export default (app) => {
   app.post('/api/user/likePlace', UserController.request.addLikedPlace);
   app.post('/api/user/passPlace', UserController.request.addPassedPlace);
   app.post('/api/user/flights', UserController.request.getFlights);
+  app.post('/api/user/likedPlaces', UserController.request.getLikedPlaces);
+  app.post('/api/user/passedPlaces', UserController.request.getPassedPlaces);
 };
