@@ -26,7 +26,15 @@ Mastercard.helpers.generatePrivateKey = (env) =>{
   return pem.toString('utf8')
 };
 
-Mastercard.services.cardMapCreate = () => {
+Mastercard.helpers.generateTransactionRef = () => {
+  function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+    return result;
+  }
+  return randomString(19, '0123456789');
+}
+Mastercard.services.cardMapCreate = (userId, accountNumber, alias) => {
   let privateKey = Mastercard.helpers.generatePrivateKey(environment.sandbox);
   let service = new cardMappingServiceClass.CardMappingService(key.MASTERCARD_CONSUMER_KEY,
     privateKey, environment.sandbox);
@@ -34,13 +42,13 @@ Mastercard.services.cardMapCreate = () => {
   {
     CreateMappingRequest: {
       ICA : "009674",
-      SubscriberId : "13147449999",
+      SubscriberId : userId,
       SubscriberType : "PHONE_NUMBER",
       AccountUsage : "RECEIVING",
-      AccountNumber : "5184680430000006",
+      AccountNumber : accountNumber,
       DefaultIndicator : "T",
-      ExpiryDate : 201401,
-      Alias : "My Debit Card",
+      ExpiryDate : 201801,
+      Alias : alias,
       Address: {
         Line1 : "123 Main Street",
         City : "OFallon",
@@ -53,7 +61,7 @@ Mastercard.services.cardMapCreate = () => {
         CardholderMiddleName : "Q",
         CardholderLastName : "Public"
       },
-      DateOfBirth : 19460102
+      DateOfBirth : 19951216
     }
   };
 
@@ -61,17 +69,17 @@ Mastercard.services.cardMapCreate = () => {
   return Promise.resolve(service.getCreateMapping(createRequest));
 };
 
-Mastercard.services.cardMapInquire = () => {
+Mastercard.services.cardMapInquire = (userId, alias) => {
   let privateKey = Mastercard.helpers.generatePrivateKey(environment.sandbox);
   let service = new cardMappingServiceClass.CardMappingService(key.MASTERCARD_CONSUMER_KEY,
     privateKey, environment.sandbox);
   const inquireRequest = 
   {
     InquireMappingRequest: {
-      SubscriberId : "13147449999",
+      SubscriberId : userId,
       SubscriberType : "PHONE_NUMBER",
       AccountUsage : "RECEIVING",
-      Alias : "My Debit Card",
+      Alias : alias,
       DataResponseFlag: "3"
     }
   };
@@ -81,17 +89,17 @@ Mastercard.services.cardMapInquire = () => {
   return Promise.resolve(service.getInquireMapping(inquireRequest)); 
 };
 
-Mastercard.services.cardMapUpdate = () => {
+Mastercard.services.cardMapUpdate = (userId, accountNumber, alias) => {
   let privateKey = Mastercard.helpers.generatePrivateKey(environment.sandbox);
   let service = new cardMappingServiceClass.CardMappingService(key.MASTERCARD_CONSUMER_KEY,
     privateKey, environment.sandbox);
   const inquireRequest = 
   {
     InquireMappingRequest: {
-      SubscriberId : "13147449999",
+      SubscriberId : userId,
       SubscriberType : "PHONE_NUMBER",
       AccountUsage : "RECEIVING",
-      Alias : "My Debit Card",
+      Alias : alias,
       DataResponseFlag: "3"
     }
   };
@@ -99,10 +107,10 @@ Mastercard.services.cardMapUpdate = () => {
   {
     UpdateMappingRequest: {
       AccountUsage : "RECEIVING",
-      AccountNumber : "5184680430000006",
+      AccountNumber : accountNumber,
       DefaultIndicator : "T",
-      ExpiryDate : 201401,
-      Alias : "My Debit Card",
+      ExpiryDate : 201801,
+      Alias : alias,
       Address: {
         Line1 : "123 Main Street",
         City : "OFallon",
@@ -115,7 +123,7 @@ Mastercard.services.cardMapUpdate = () => {
         CardholderMiddleName : "Q",
         CardholderLastName : "Public"
       },
-      DateOfBirth : 19460102
+      DateOfBirth : 19951216
     }
   };
 
@@ -132,7 +140,7 @@ Mastercard.services.cardMapUpdate = () => {
   })
 };
 
-Mastercard.services.transfer = () =>{
+Mastercard.services.transfer = (sendingAccountNumber, receivingAccountNumber, amount) =>{
   let privateKey = Mastercard.helpers.generatePrivateKey(environment.sandbox);
   let service = new transferServiceClass.TransferService(
     key.MASTERCARD_CONSUMER_KEY,
@@ -144,7 +152,7 @@ Mastercard.services.transfer = () =>{
     TransferRequest: {
         LocalDate: "1212",
         LocalTime: "161222",
-        TransactionReference: "1999999034810154903",
+        TransactionReference: Mastercard.helpers.generateTransactionRef(),
         SenderName: "John Doe",
         SenderAddress: {
             Line1:  "123 Main Street",
@@ -155,15 +163,15 @@ Mastercard.services.transfer = () =>{
             Country:  "USA"
         },
         FundingCard: {
-            AccountNumber:  "5184680430000006",
-            ExpiryMonth:  "11",
+            AccountNumber: sendingAccountNumber,
+            ExpiryMonth:  "01",
             ExpiryYear:  "2018"
         },
         FundingUCAF:  "MjBjaGFyYWN0ZXJqdW5rVUNBRjU=1111",
         FundingMasterCardAssignedId:  "123456",
         FundingAmount: {
-            Value: "15500",
-            Currency:  "840"
+            Value: amount, 
+            Currency:  "702" //IS0 4217 SGD
         },
         ReceiverName:  "Jose Lopez",
         ReceiverAddress: {
@@ -176,11 +184,11 @@ Mastercard.services.transfer = () =>{
         },
         ReceiverPhone:  "1800639426",
         ReceivingCard: {
-            AccountNumber:  "5184680430000022"
+            AccountNumber:  receivingAccountNumber
         },
         ReceivingAmount: {
-            Value: "182206",
-            Currency: "484"
+            Value: amount,
+            Currency: "702" //IS0 4217 SGD
         },
         Channel:  "W",
         UCAFSupport:  "false",
@@ -202,15 +210,15 @@ Mastercard.services.transfer = () =>{
 };
 
 
-Mastercard.services.checkEligibility = () => {
+Mastercard.services.checkEligibility = (sendingAccountNumber, receivingAccountNumber) => {
   let privateKey = Mastercard.helpers.generatePrivateKey(environment.sandbox);
   let service = new panEligibilityServiceClass.PanEligibilityService(key.MASTERCARD_CONSUMER_KEY,
     privateKey, environment.sandbox);
   const checkEligibilityRequest = 
   {
     PanEligibilityRequest: {
-      SendingAccountNumber : "5184680430000006",
-      ReceivingAccountNumber : "5184680430000006"
+      SendingAccountNumber : sendingAccountNumber,
+      ReceivingAccountNumber : receivingAccountNumber
     }
   };
 
