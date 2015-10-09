@@ -44,25 +44,28 @@ FlightController.request.addUser = (req, res) => {
  
 FlightController.promise.get = (req, res) => {
   const {_id} = req.body;
-  return Promise.resolve(Flight.findOne({_id}).exec())
+  return Promise.resolve(Flight.findOne({_id}).populate('users').exec((err, users) => {console.log (users)}))
     .then(MongooseHelper.checkExists)
+
 };
 
 FlightController.promise.getAll = (req, res) => {
   const {_id} = req.body;
   return Promise.resolve(Flight.find().exec())
+  //.populate('users').exec((err, users) => {console.log (users)})
     .then(MongooseHelper.checkExists)
 };
 
 FlightController.promise.query = (req, res) => {
   const {flightNumbers, startLocation, endLocation, startDate} = req.body;
-  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate}).exec())
+  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate}).populate('users').exec((err, users) => {console.log (users)}))
     .then(MongooseHelper.checkExists)
 };
 
 FlightController.promise.queryAndCreate = (req, res) => {
   const {flightNumbers, startLocation, endLocation, startDate} = req.body;
-  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate}).exec())
+  return Promise.resolve(Flight.findOne({flightNumbers, startLocation, endLocation, startDate})
+    .populate('users').exec((err, users) => {console.log (users)}))
     .then(MongooseHelper.checkExists)
     .catch(() => {
       return MongooseHelper.create(Flight, {flightNumbers, startLocation, endLocation, startDate, users:[]});
@@ -70,32 +73,32 @@ FlightController.promise.queryAndCreate = (req, res) => {
 };
 
 FlightController.promise.addUser = (req, res) => {
-  const {flightId} = req.body;
+  const {_id} = req.body;
   const reqUser = req.body.user;
   
-  return MongooseHelper.findOne(Flight,{_id: flightId})
+  return MongooseHelper.findOne(Flight,{_id: _id})
     .then((flight) => {
-      return Promise.resolve(User.findOne({facebookId: reqUser.facebookId}).exec())
+      let flightItem = _.extend(flight.toObject(), {places: []});
+      return MongooseHelper.findOne(User, {facebookId: reqUser.facebookId})
       .then(MongooseHelper.checkExists)
       .then((user)=> {
-        let userItem = {
-          user,
-          purpose: reqUser.purpose
-        }
-        if (_.result(
-          _.find(flight.users, (chr) => {
-           if (chr && chr.user) { 
-            return chr.user.facebookId === user.facebookId; 
+        let userItem = _.extend(user.toObject(),{purpose: reqUser.purpose});
+        if (_.result(_.find(flight.users, (chr) => {
+           if (chr) { 
+            return chr.facebookId === user.facebookId; 
            }
           }),'_id') === undefined) {
-          return MongooseHelper.findOneAndUpdate(Flight, {_id: flightId}, 
-            {$push: {users: userItem}}, {new: true});
+          return MongooseHelper.findOneAndUpdate(User, {facebookId: reqUser.facebookId},
+            {$push: {flights: flightItem}}, {new: true}, {populate: 'flights'})
+          .then(() => {
+            return MongooseHelper.findOneAndUpdate(Flight, {_id: _id}, 
+              {$push: {users: userItem}}, {new: true}, {populate: 'users'});
+          });
         }
         return Promise.resolve(flight);
       })
     })
     .then(MongooseHelper.checkExists)
-    
   }
 
 
