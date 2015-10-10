@@ -25,10 +25,9 @@
 static CGFloat const kProfilePictureSize = 130;
 static CGFloat const kCellHeight = 60;
 
-static NSInteger const kMainMenuCellCount = 3;
+static NSInteger const kMainMenuCellCount = 2;
 static NSInteger const kFlightCellIndex = 0;
-static NSInteger const KChatCellIndex = 1;
-static NSInteger const kPaymentCellIndex = 2;
+static NSInteger const kPaymentCellIndex = 1;
 
 static NSInteger const kOtherMenuCellCount = 1;
 static NSInteger const kLogOutCellIndex = 0;
@@ -65,7 +64,6 @@ static NSString *const kSidebarMenuItemCellIdentifier = @"SidebarMenuItemCellIde
   if (self.nameLabel.text == nil || [self.nameLabel.text trim].length == 0) {
     self.nameLabel.text = [FBSDKProfile currentProfile].name;
     NSInteger width = self.view.frame.size.width;
-    NSLog(@"%@", [FBSDKProfile currentProfile].userID);
     NSString *avatarUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%td",
                              [FBSDKProfile currentProfile].userID, width];
     [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl]
@@ -215,8 +213,6 @@ static NSString *const kSidebarMenuItemCellIdentifier = @"SidebarMenuItemCellIde
   if (tableView == self.mainMenuTableView) {
     if (row == kFlightCellIndex) {
       [cell setMenuItemType:kSideBarMenuItemFlights];
-    } else if (row == KChatCellIndex) {
-      [cell setMenuItemType:kSideBarMenuItemChats];
     } else if (row == kPaymentCellIndex) {
       [cell setMenuItemType:kSideBarMenuItemPayment];
     }

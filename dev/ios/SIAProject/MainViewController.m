@@ -3,7 +3,6 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "FlightViewController.h"
-#import "ChatViewController.h"
 #import "PaymentViewController.h"
 #import "MenuViewController.h"
 #import "RootNavigationController.h"
@@ -35,9 +34,8 @@ static NSInteger const kMainSectionIndex = 0;
 - (void)initializeContent {
   // Main View Controllers
   FlightViewController *flightViewController = [[FlightViewController alloc] init];
-  ChatViewController *chatViewController = [[ChatViewController alloc] init];
   PaymentViewController *paymentViewController = [[PaymentViewController alloc] init];
-  self.mainViewControllers = @[flightViewController, chatViewController, paymentViewController];
+  self.mainViewControllers = @[flightViewController, paymentViewController];
   
   self.selectedSection = kMainSectionIndex;
   self.selectedIndex = 0;

@@ -32,7 +32,6 @@
 		0F7170CA1BC68A0C00970A68 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170C91BC68A0C00970A68 /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170CD1BC68A8500970A68 /* SidebarMenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170CC1BC68A8500970A68 /* SidebarMenuItemCell.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170D01BC68B5100970A68 /* UIFont+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170CF1BC68B5100970A68 /* UIFont+Helper.m */; settings = {ASSET_TAGS = (); }; };
-		0F7170D31BC68E7900970A68 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170D21BC68E7900970A68 /* ChatViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170EC1BC68EFF00970A68 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170D71BC68EFF00970A68 /* Lato-Black.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170ED1BC68EFF00970A68 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170D81BC68EFF00970A68 /* Lato-BlackItalic.ttf */; settings = {ASSET_TAGS = (); }; };
 		0F7170EE1BC68EFF00970A68 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F7170D91BC68EFF00970A68 /* Lato-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -64,6 +63,10 @@
 		0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */; settings = {ASSET_TAGS = (); }; };
+		0FE0228F1BC89FB20031EECA /* RequestPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0228E1BC89FB20031EECA /* RequestPaymentViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FE022921BC89FC10031EECA /* ResponsePaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022911BC89FC10031EECA /* ResponsePaymentViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FE022951BC8A43E0031EECA /* RequestUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022941BC8A43E0031EECA /* RequestUserCell.m */; settings = {ASSET_TAGS = (); }; };
+		0FE022981BC8A6780031EECA /* RequestPaymentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA81791BC866F700B04138 /* FlightSummaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0408A1BC878FF0025BA71 /* ChatData.m */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
@@ -120,8 +123,6 @@
 		0F7170CC1BC68A8500970A68 /* SidebarMenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarMenuItemCell.m; sourceTree = "<group>"; };
 		0F7170CE1BC68B5100970A68 /* UIFont+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Helper.h"; sourceTree = "<group>"; };
 		0F7170CF1BC68B5100970A68 /* UIFont+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Helper.m"; sourceTree = "<group>"; };
-		0F7170D11BC68E7900970A68 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		0F7170D21BC68E7900970A68 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		0F7170D71BC68EFF00970A68 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		0F7170D81BC68EFF00970A68 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		0F7170D91BC68EFF00970A68 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -163,6 +164,14 @@
 		0FBD2C3D1BC2FA8F00FA149B /* UIView+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helper.m"; sourceTree = "<group>"; };
 		0FBD2C411BC2FAEF00FA149B /* ShadowUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowUIView.h; sourceTree = "<group>"; };
 		0FBD2C421BC2FAEF00FA149B /* ShadowUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowUIView.m; sourceTree = "<group>"; };
+		0FE0228D1BC89FB20031EECA /* RequestPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestPaymentViewController.h; sourceTree = "<group>"; };
+		0FE0228E1BC89FB20031EECA /* RequestPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestPaymentViewController.m; sourceTree = "<group>"; };
+		0FE022901BC89FC10031EECA /* ResponsePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePaymentViewController.h; sourceTree = "<group>"; };
+		0FE022911BC89FC10031EECA /* ResponsePaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsePaymentViewController.m; sourceTree = "<group>"; };
+		0FE022931BC8A43E0031EECA /* RequestUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestUserCell.h; sourceTree = "<group>"; };
+		0FE022941BC8A43E0031EECA /* RequestUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUserCell.m; sourceTree = "<group>"; };
+		0FE022961BC8A6780031EECA /* RequestPaymentConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestPaymentConfirmViewController.h; sourceTree = "<group>"; };
+		0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestPaymentConfirmViewController.m; sourceTree = "<group>"; };
 		0FEA81781BC866F700B04138 /* FlightSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSummaryCell.h; sourceTree = "<group>"; };
 		0FEA81791BC866F700B04138 /* FlightSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSummaryCell.m; sourceTree = "<group>"; };
 		0FF040891BC878FF0025BA71 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
@@ -406,10 +415,7 @@
 				0F4AFE491BC6D32A00012C0F /* Flight User View Controller */,
 				0F4AFE4A1BC6D5B600012C0F /* Flight Inspire View Controller */,
 				0F4AFE4E1BC6F88400012C0F /* Flight Summary View Controller */,
-				0F7170C41BC6893C00970A68 /* PaymentViewController.h */,
-				0F7170C51BC6893C00970A68 /* PaymentViewController.m */,
-				0F7170D11BC68E7900970A68 /* ChatViewController.h */,
-				0F7170D21BC68E7900970A68 /* ChatViewController.m */,
+				0FE0228C1BC89F9E0031EECA /* Payment View Controller */,
 				0F4AFE561BC6F9FE00012C0F /* Chat Group View Controller */,
 			);
 			name = Controllers;
@@ -455,6 +461,23 @@
 				0FAC945D1BC7E82E008B4883 /* ShadowedUIButton.m */,
 			);
 			name = "Extended Views";
+			sourceTree = "<group>";
+		};
+		0FE0228C1BC89F9E0031EECA /* Payment View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F7170C41BC6893C00970A68 /* PaymentViewController.h */,
+				0F7170C51BC6893C00970A68 /* PaymentViewController.m */,
+				0FE0228D1BC89FB20031EECA /* RequestPaymentViewController.h */,
+				0FE0228E1BC89FB20031EECA /* RequestPaymentViewController.m */,
+				0FE022961BC8A6780031EECA /* RequestPaymentConfirmViewController.h */,
+				0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */,
+				0FE022901BC89FC10031EECA /* ResponsePaymentViewController.h */,
+				0FE022911BC89FC10031EECA /* ResponsePaymentViewController.m */,
+				0FE022931BC8A43E0031EECA /* RequestUserCell.h */,
+				0FE022941BC8A43E0031EECA /* RequestUserCell.m */,
+			);
+			name = "Payment View Controller";
 			sourceTree = "<group>";
 		};
 		5C0993E6D5A8DDC8FF23007A /* Frameworks */ = {
@@ -610,15 +633,19 @@
 				0F7170CA1BC68A0C00970A68 /* MenuViewController.m in Sources */,
 				0F59335B1BC6C02B00DEC827 /* FlightSummaryViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
+				0FE022981BC8A6780031EECA /* RequestPaymentConfirmViewController.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
 				0F7170B31BC6862800970A68 /* MainViewController.m in Sources */,
 				0F7170C01BC6891100970A68 /* FlightViewController.m in Sources */,
+				0FE0228F1BC89FB20031EECA /* RequestPaymentViewController.m in Sources */,
 				0F7170BD1BC687CE00970A68 /* UIViewController+SideBarViewController.m in Sources */,
+				0FE022951BC8A43E0031EECA /* RequestUserCell.m in Sources */,
 				0F5933551BC6BFBF00DEC827 /* FlightResultViewController.m in Sources */,
 				0FAC945E1BC7E82E008B4883 /* ShadowedUIButton.m in Sources */,
 				0F4AFE481BC6CEBA00012C0F /* NSDate+Helper.m in Sources */,
 				0FAC945B1BC7E3FC008B4883 /* ToLocationSelectViewController.m in Sources */,
 				0F5933611BC6C61F00DEC827 /* FlightCell.m in Sources */,
+				0FE022921BC89FC10031EECA /* ResponsePaymentViewController.m in Sources */,
 				0FBD2C431BC2FAEF00FA149B /* ShadowUIView.m in Sources */,
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
 				0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */,
@@ -629,7 +656,6 @@
 				0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */,
 				0F6E4BA41BC2B87500ADD31B /* main.m in Sources */,
 				0FAC94581BC7E1CD008B4883 /* LocationCell.m in Sources */,
-				0F7170D31BC68E7900970A68 /* ChatViewController.m in Sources */,
 				0F7170CD1BC68A8500970A68 /* SidebarMenuItemCell.m in Sources */,
 				0F4AFE4D1BC6D80700012C0F /* UserCell.m in Sources */,
 				0F7170C61BC6893C00970A68 /* PaymentViewController.m in Sources */,
@@ -728,6 +754,7 @@
 			baseConfigurationReference = FD4A5FCB7C2F67FF416C8F72 /* Pods-SIAProject.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SIAProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sia.formidable.SIAProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -739,6 +766,7 @@
 			baseConfigurationReference = E2B51EC0270BAFE7466A981B /* Pods-SIAProject.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SIAProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sia.formidable.SIAProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

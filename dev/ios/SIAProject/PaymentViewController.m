@@ -1,58 +1,23 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Masonry/Masonry.h>
-#import <PromiseKit/PromiseKit.h>
 
 #import "PaymentViewController.h"
 
-#import "HttpClient.h"
-#import "Constants.h"
-#import "UIColor+Helper.h"
-#import "NSDate+Helper.h"
-#import "FlightUserViewController.h"
-#import "FlightSearchViewController.h"
 #import "UIViewController+SideBarViewController.h"
-#import "FlightCell.h"
-
-@interface PaymentViewController() <UITableViewDataSource, UITableViewDelegate>
-
-@end
+#import "UIColor+Helper.h"
+#import "RequestPaymentViewController.h"
+#import "ResponsePaymentViewController.h"
 
 @implementation PaymentViewController {
-  // Flight Table View
-  UITableView *flightTableView;
-  
-  // Array of flights
-  NSArray *flightList;
+  UIButton *requestButton;
+  UIButton *responseButton;
 }
-
-static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  flightList = @[];
   [self configureGesture];
   [self configureNavigationBar];
-  [self configureFlightList];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  [self getFlightList];
-}
-
-- (void)getFlightList {
-  NSString *url = [NSString stringWithFormat:@"%@/api/user/flights", [Constants apiUrl]];
-  [HttpClient postWithUrl:url body:@{
-                                     @"facebookId": [FBSDKAccessToken currentAccessToken].userID
-                                     }]
-  .then(^(NSArray *flights) {
-    flightList = flights;
-    [flightTableView reloadData];
-  })
-  .catch(^(NSError *error) {
-    NSLog(@"%@", [error localizedDescription]);
-  });
+  [self configureButtons];
 }
 
 - (void)configureGesture {
@@ -63,7 +28,7 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 }
 
 - (void)configureNavigationBar {
-  self.navigationItem.title = @"FLIGHTS";
+  self.navigationItem.title = @"PAYMENT";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
   self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -75,24 +40,6 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
                                                                            style:UIBarButtonItemStylePlain
                                                                           target:nil
                                                                           action:nil];
-  
-  // Configure search button on the right of nav bar
-  FAKIcon *addIcon = [FAKIonIcons paperAirplaneIconWithSize:28];
-  [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-  UIImage *addIconImage = [addIcon imageWithSize:CGSizeMake(28, 28)];
-  UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
-  [addButton setAdjustsImageWhenHighlighted:FALSE];
-  [addButton setImage:addIconImage forState:UIControlStateNormal];
-  [addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-  
-  UIBarButtonItem *rightSpacer = [[UIBarButtonItem alloc]
-                                  initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                  target:nil action:nil];
-  rightSpacer.width = -10;
-  
-  
-  [self.navigationItem setRightBarButtonItems:@[rightSpacer, addBarButton]];
   
   // Configure menu button on the left of nav bar
   UIBarButtonItem *leftSpacer = [[UIBarButtonItem alloc]
@@ -110,62 +57,39 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
   [self.navigationItem setLeftBarButtonItems:@[leftSpacer,menuButton]];
 }
 
-- (void)configureFlightList {
-  flightTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-  [self.view addSubview:flightTableView];
-  flightTableView.dataSource = self;
-  flightTableView.delegate = self;
+- (void)configureButtons {
+  requestButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  [self.view addSubview:requestButton];
   
-  [flightTableView registerClass:[FlightCell class]
-          forCellReuseIdentifier:kFlightCellIdentifier];
+  [requestButton setTitle:@"Payment Request" forState:UIControlStateNormal];
+  [requestButton addTarget:self action:@selector(requestButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
-  [flightTableView setBackgroundColor:[UIColor whiteColor]];
-  flightTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+  [requestButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.mas_equalTo(self.view.mas_centerX);
+    make.bottom.mas_equalTo(self.view.mas_centerY).with.offset(-10);
+  }];
   
-  [flightTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.mas_equalTo(self.view.mas_left);
-    make.top.mas_equalTo(self.view.mas_top);
-    make.size.mas_equalTo(self.view);
+  responseButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  [self.view addSubview:responseButton];
+  
+  [responseButton setTitle:@"Response Request" forState:UIControlStateNormal];
+  [responseButton addTarget:self action:@selector(requestButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  
+  [responseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.mas_equalTo(self.view.mas_centerX);
+    make.top.mas_equalTo(self.view.mas_centerY).with.offset(10);
   }];
 }
 
-#pragma mark - Table View Data Source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+- (void)requestButtonPressed:(UIButton *)sender {
+  RequestPaymentViewController *vc = [[RequestPaymentViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:TRUE];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return flightList.count;
+- (void)responseButtonPressed:(UIButton *)sender {
+  ResponsePaymentViewController *vc = [[ResponsePaymentViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:TRUE];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  FlightCell *cell = [tableView dequeueReusableCellWithIdentifier:kFlightCellIdentifier];
-  if (cell == nil) {
-    cell = [[FlightCell alloc] initWithStyle:UITableViewCellStyleDefault
-                             reuseIdentifier:kFlightCellIdentifier];
-  }
-  NSDictionary *flight = flightList[indexPath.row];
-  [cell setFlightNumber:flight[@"flightNumbers"]];
-  [cell setStartDate:[NSDate isoDateFromString:flight[@"startDate"]]];
-  [cell setStartLocation:flight[@"startLocation"]];
-  [cell setEndLocation:flight[@"endLocation"]];
-  
-  return cell;
-}
-
-#pragma mark - Table View Delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 80;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-  NSDictionary *flight = flightList[indexPath.row];
-  FlightUserViewController *flightUserViewController = [[FlightUserViewController alloc] init];
-  flightUserViewController.flight = flight;
-  [self.navigationController pushViewController:flightUserViewController animated:TRUE];
-}
-
 
 #pragma mark - Gesture Recognizer
 - (void)panGestureRecognized:(UIPanGestureRecognizer *)sender {
@@ -179,11 +103,6 @@ static NSString *const kFlightCellIdentifier = @"FlightCellIdentifier";
 }
 
 #pragma mark - Button Handler
-- (void)addButtonPressed:(UIButton *)sender {
-  FlightSearchViewController *flightSearchViewController = [[FlightSearchViewController alloc] init];
-  [self.navigationController pushViewController:flightSearchViewController animated:TRUE];
-}
-
 - (void)menuButtonPressed:(UIButton *)sender {
   SideBarViewController *sideBarVc = self.sideBarViewController;
   // Dismiss keyboard (optional)
