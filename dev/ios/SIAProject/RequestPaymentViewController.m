@@ -1,4 +1,5 @@
 #import <Masonry/Masonry.h>
+#import <PromiseKit/PromiseKit.h>
 
 #import "RequestPaymentViewController.h"
 
@@ -28,7 +29,15 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/users", [Constants apiUrl]];
+  [HttpClient postWithUrl:requestUrl body:@{}]
+  .then(^(NSArray *users) {
+    requestList = users;
+    [requestTableView reloadData];
+  })
+  .catch(^(NSError *error) {
+    NSLog(@"%@",[error localizedDescription]);
+  });
 }
 
 - (void)configureNavigationBar {

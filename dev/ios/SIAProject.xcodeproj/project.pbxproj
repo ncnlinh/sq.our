@@ -67,6 +67,8 @@
 		0FE022921BC89FC10031EECA /* ResponsePaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022911BC89FC10031EECA /* ResponsePaymentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0FE022951BC8A43E0031EECA /* RequestUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022941BC8A43E0031EECA /* RequestUserCell.m */; settings = {ASSET_TAGS = (); }; };
 		0FE022981BC8A6780031EECA /* RequestPaymentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FE0229B1BC8AC6E0031EECA /* RequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0229A1BC8AC6E0031EECA /* RequestCell.m */; settings = {ASSET_TAGS = (); }; };
+		0FE0229E1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0229D1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA81791BC866F700B04138 /* FlightSummaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0408A1BC878FF0025BA71 /* ChatData.m */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
@@ -172,6 +174,10 @@
 		0FE022941BC8A43E0031EECA /* RequestUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUserCell.m; sourceTree = "<group>"; };
 		0FE022961BC8A6780031EECA /* RequestPaymentConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestPaymentConfirmViewController.h; sourceTree = "<group>"; };
 		0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestPaymentConfirmViewController.m; sourceTree = "<group>"; };
+		0FE022991BC8AC6E0031EECA /* RequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestCell.h; sourceTree = "<group>"; };
+		0FE0229A1BC8AC6E0031EECA /* RequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestCell.m; sourceTree = "<group>"; };
+		0FE0229C1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePaymentConfirmViewController.h; sourceTree = "<group>"; };
+		0FE0229D1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsePaymentConfirmViewController.m; sourceTree = "<group>"; };
 		0FEA81781BC866F700B04138 /* FlightSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSummaryCell.h; sourceTree = "<group>"; };
 		0FEA81791BC866F700B04138 /* FlightSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSummaryCell.m; sourceTree = "<group>"; };
 		0FF040891BC878FF0025BA71 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
@@ -474,8 +480,12 @@
 				0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */,
 				0FE022901BC89FC10031EECA /* ResponsePaymentViewController.h */,
 				0FE022911BC89FC10031EECA /* ResponsePaymentViewController.m */,
+				0FE0229C1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.h */,
+				0FE0229D1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m */,
 				0FE022931BC8A43E0031EECA /* RequestUserCell.h */,
 				0FE022941BC8A43E0031EECA /* RequestUserCell.m */,
+				0FE022991BC8AC6E0031EECA /* RequestCell.h */,
+				0FE0229A1BC8AC6E0031EECA /* RequestCell.m */,
 			);
 			name = "Payment View Controller";
 			sourceTree = "<group>";
@@ -634,6 +644,7 @@
 				0F59335B1BC6C02B00DEC827 /* FlightSummaryViewController.m in Sources */,
 				0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */,
 				0FE022981BC8A6780031EECA /* RequestPaymentConfirmViewController.m in Sources */,
+				0FE0229B1BC8AC6E0031EECA /* RequestCell.m in Sources */,
 				0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */,
 				0F7170B31BC6862800970A68 /* MainViewController.m in Sources */,
 				0F7170C01BC6891100970A68 /* FlightViewController.m in Sources */,
@@ -650,6 +661,7 @@
 				0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */,
 				0F7171021BC6912D00970A68 /* NSString+Helper.m in Sources */,
 				0FBD2C3E1BC2FA8F00FA149B /* UIView+Helper.m in Sources */,
+				0FE0229E1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m in Sources */,
 				0F7170D01BC68B5100970A68 /* UIFont+Helper.m in Sources */,
 				0F5933581BC6C01700DEC827 /* FlightInspireViewController.m in Sources */,
 				0FAC94551BC7DE1E008B4883 /* FromLocationSelectViewController.m in Sources */,

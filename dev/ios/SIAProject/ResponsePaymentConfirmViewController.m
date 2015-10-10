@@ -1,28 +1,26 @@
 #import <Masonry/Masonry.h>
 #import <PromiseKit/PromiseKit.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import "RequestPaymentConfirmViewController.h"
+#import "ResponsePaymentConfirmViewController.h"
 
 #import "UIColor+Helper.h"
 #import "HttpClient.h"
 #import "Constants.h"
 
-@implementation RequestPaymentConfirmViewController {
+@implementation ResponsePaymentConfirmViewController {
   UITextField *bankAccountNumberTextField;
-  UITextField *amountTextField;
-  UITextField *reasoNTextField;
   UIButton *confirmButton;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self configureNavigationBar];
-  [self configureTextFields];
+  [self configureTextField];
+  [self configureButton];
 }
 
 - (void)configureNavigationBar {
-  self.navigationItem.title = @"REQUEST CONFIRMATION";
+  self.navigationItem.title = @"PAYMENT";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
   self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -36,8 +34,7 @@
                                                                           action:nil];
 }
 
-
-- (void)configureTextFields {
+- (void)configureTextField {
   bankAccountNumberTextField = [[UITextField alloc] init];
   [self.view addSubview:bankAccountNumberTextField];
   
@@ -48,28 +45,7 @@
     make.centerY.mas_equalTo(self.view.mas_centerY);
     make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
   }];
-  
-  amountTextField = [[UITextField alloc] init];
-  [self.view addSubview:amountTextField];
-  
-  amountTextField.placeholder = @"Amount";
-  
-  [amountTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.mas_equalTo(bankAccountNumberTextField.mas_bottom).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
-    make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
-  }];
-  
-  reasoNTextField = [[UITextField alloc] init];
-  [self.view addSubview:reasoNTextField];
-  
-  reasoNTextField.placeholder = @"Reason";
-  
-  [reasoNTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.mas_equalTo(amountTextField.mas_bottom).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
-    make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
-  }];
+
 }
 
 - (void)configureButton {
@@ -81,20 +57,17 @@
   
   [confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
-    make.top.mas_equalTo(reasoNTextField.mas_bottom).with.offset(20);
+    make.top.mas_equalTo(bankAccountNumberTextField.mas_bottom).with.offset(20);
   }];
 }
 
-- (void)confirmButtonPressed:(UIButton *)sendButton {
-  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/payment/ask", [Constants apiUrl]];
+- (void)confirmButtonPressed:(UIButton *)sender {
+  NSString *requestUrl = [NSString stringWithFormat:@"%@/api/payment/pay", [Constants apiUrl]];
   [HttpClient postWithUrl:requestUrl body:@{
-                                            @"requestUser": [FBSDKAccessToken currentAccessToken].userID,
-                                            @"receivingAccountNumber": bankAccountNumberTextField.text,
-                                            @"receivedUser": self.requestedUser[@"facebookId"],
-                                            @"amount": amountTextField.text,
-                                            @"reason": reasoNTextField.text
+                                            @"_id": self.paymentRequest[@"_id"],
+                                            @"sendingAccountNumber": bankAccountNumberTextField.text
                                             }]
-  .then(^{
+  .then(^(NSDictionary *dict) {
     [self.navigationController popToRootViewControllerAnimated:TRUE];
   })
   .catch(^(NSError *error) {
