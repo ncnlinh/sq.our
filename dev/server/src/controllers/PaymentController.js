@@ -23,27 +23,7 @@ PaymentController.request.transfer = (req, res) => {
       let data = {statusFunding, descFunding, statusPayment, descPayment};
       ResponseHelper.success(res, data);
     })
-    .catch((error) => {
-      let errorMessage
-      if (error.Errors) {
-
-        if (error.Errors.Error[0].Description) {
-          errorMessage = error.Errors.Error[0].Description[0];
-        } else {
-          let details = error.Errors.Error[0].Details[0].Detail;
-          for (let i in details) {
-            if (details[i].Name[0] === "ResponseDescription"){
-              errorMessage= details[i].Value[0];
-              break
-            }
-          }
-        }
-
-      } else {
-        errorMessage = error.message;
-      }
-      ResponseHelper.error(res, new ClientError(errorMessage), DEBUG_ENV)
-    });
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
 };
 
 PaymentController.request.cardMapCreate = (req, res) => {
@@ -111,8 +91,8 @@ PaymentController.promise.pay = (req, res) => {
   const {_id, sendingAccountNumber} = req.body;
   return MongooseHelper.findOne(PaymentRequest, {_id: _id})
   .then((request)=> {
-    return PaymentController.request.transfer({body:{sendingAccountNumber: sendingAccountNumber, receivingAccountNumber: request.receivingAccountNumber, amount: request.amount}})
-    .then((message)=>{
+    return Mastercard.services.transfer(sendingAccountNumber, request.receivingAccountNumber, request.amount)
+    .then((status)=>{
       return MongooseHelper.findOneAndUpdate(PaymentRequest, {_id: _id}, {sendingAccountNumber: sendingAccountNumber, status: "Paid"}, {new: true});
     })
   })
