@@ -1,6 +1,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <PromiseKit/PromiseKit.h>
+#import <Masonry/Masonry.h>
 
 #import "LoginViewController.h"
 
@@ -20,12 +21,26 @@
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor whiteColor];
   
+  UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"App Logo"]];
+  [self.view addSubview:logo];
+  [logo mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.height.mas_equalTo(@250);
+    make.width.mas_equalTo(@250);
+    make.centerX.mas_equalTo(self.view.mas_centerX);
+    make.top.mas_equalTo(self.view.mas_top).with.offset(100);
+  }];
+  
   // Add FB Login Button
   FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
   loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
   loginButton.center = self.view.center;
   loginButton.delegate = self;
   [self.view addSubview:loginButton];
+  
+  [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.mas_equalTo(self.view.mas_centerX);
+    make.top.mas_equalTo(logo.mas_bottom).with.offset(20);
+  }];
 }
 
 #pragma mark - FBSDK Login Button Delegate

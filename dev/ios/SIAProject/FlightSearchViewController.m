@@ -1,5 +1,6 @@
 #import <Masonry/Masonry.h>
 
+#import "UIView+Helper.h"
 #import "FlightSearchViewController.h"
 #import "FromLocationSelectViewController.h"
 #import "ToLocationSelectViewController.h"
@@ -62,12 +63,19 @@ FromLocationSelectViewControllerDelegate>
   [self.view addSubview:flightDateButton];
   
   [flightDateButton setTitle:@"Flight Date" forState:UIControlStateNormal];
-  [flightDateButton setBackgroundColor:[UIColor redColor]];
+  [flightDateButton setBackgroundColor:[UIColor clearColor]];
+  [flightDateButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
+  [flightDateButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [flightDateButton setBorderColor:[UIColor appPrimaryColor]];
+  [flightDateButton setBorderWidth:1.0];
+  [flightDateButton setCornerRadius:4.0];
+  [flightDateButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
   [flightDateButton addTarget:self action:@selector(flightDateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   [flightDateButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.top.mas_equalTo(self.view.mas_top).with.offset(20);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
 }
 
@@ -76,7 +84,13 @@ FromLocationSelectViewControllerDelegate>
   [self.view addSubview:fromLocationButton];
   
   [fromLocationButton setTitle:@"Flight Start Location" forState:UIControlStateNormal];
-  [fromLocationButton setBackgroundColor:[UIColor redColor]];
+  [fromLocationButton setBackgroundColor:[UIColor clearColor]];
+  [fromLocationButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
+  [fromLocationButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [fromLocationButton setBorderColor:[UIColor appPrimaryColor]];
+  [fromLocationButton setBorderWidth:1.0];
+  [fromLocationButton setCornerRadius:4.0];
+  [fromLocationButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
   [fromLocationButton addTarget:self
                          action:@selector(fromLocationButtonPressed:)
                forControlEvents:UIControlEventTouchUpInside];
@@ -84,6 +98,7 @@ FromLocationSelectViewControllerDelegate>
   [fromLocationButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.top.mas_equalTo(flightDateButton.mas_bottom).with.offset(20);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
 }
 
@@ -92,7 +107,14 @@ FromLocationSelectViewControllerDelegate>
   [self.view addSubview:toLocationButton];
   
   [toLocationButton setTitle:@"Flight To Location" forState:UIControlStateNormal];
-  [toLocationButton setBackgroundColor:[UIColor redColor]];
+  [toLocationButton setBackgroundColor:[UIColor clearColor]];
+  [toLocationButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
+  [toLocationButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [toLocationButton setBorderColor:[UIColor appPrimaryColor]];
+  [toLocationButton setBorderWidth:1.0];
+  [toLocationButton setCornerRadius:4.0];
+  [toLocationButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
+
   [toLocationButton addTarget:self
                        action:@selector(toLocationButtonPressed:)
              forControlEvents:UIControlEventTouchUpInside];
@@ -100,6 +122,7 @@ FromLocationSelectViewControllerDelegate>
   [toLocationButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.top.mas_equalTo(fromLocationButton.mas_bottom).with.offset(20);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
 }
 
@@ -107,13 +130,19 @@ FromLocationSelectViewControllerDelegate>
   searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [self.view addSubview:searchButton];
   
-  [searchButton setTitle:@"Search" forState:UIControlStateNormal];
-  [searchButton setBackgroundColor:[UIColor redColor]];
+  [searchButton setTitle:@"Search Flights" forState:UIControlStateNormal];
+  [searchButton setBackgroundColor:[UIColor appPrimaryColor]];
+  [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [searchButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [searchButton setCornerRadius:4.0];
+  [searchButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
+
   [searchButton addTarget:self action:@selector(searchButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   [searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.top.mas_equalTo(toLocationButton.mas_bottom).with.offset(20);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
 }
 

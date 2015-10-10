@@ -51,7 +51,8 @@
   [HttpClient postWithUrl:requestUrl body:@{
                                             @"term": @"",
                                             @"offset": [NSString stringWithFormat:@"%d", arc4random_uniform(50)],
-                                            @"location": self.flight[@"endLocationName"]
+                                            @"location": self.flight[@"endLocationName"],
+                                            @"category_filter": @"landmarks,restaurants"
                                             }]
   .then(^(NSArray *arr) {
     places = arr;
@@ -67,7 +68,7 @@
 }
 
 - (void)configureNavigationBar {
-  self.navigationItem.title = @"INSPIRE ME";
+  self.navigationItem.title = @"DISCOVER!";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
   self.edgesForExtendedLayout = UIRectEdgeNone;

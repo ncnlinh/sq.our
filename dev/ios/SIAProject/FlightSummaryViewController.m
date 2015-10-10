@@ -52,7 +52,7 @@ static NSString *const kPlaceCellIdentifier = @"PlaceIdentifier";
 }
 
 - (void)configureNavigationBar {
-  self.navigationItem.title = @"INITIEARY";
+  self.navigationItem.title = @"ITINERARY";
   self.navigationController.navigationBar.barTintColor = [UIColor appPrimaryColor];
   self.navigationController.navigationBar.translucent = FALSE;
   self.edgesForExtendedLayout = UIRectEdgeNone;

@@ -6,7 +6,7 @@
 + (UIColor *)appPrimaryColor {
   static UIColor *appPrimaryColor = nil;
   if (!appPrimaryColor) {
-    appPrimaryColor = [UIColor colorFromHex:0x00D09D];
+    appPrimaryColor = [UIColor colorFromHex:0x99e9dc];
   }
   
   return appPrimaryColor;
@@ -15,7 +15,7 @@
 + (UIColor *)appSecondaryColor {
   static UIColor *appSecondaryColor = nil;
   if (!appSecondaryColor) {
-    appSecondaryColor = [UIColor colorFromHex:0x22A7F0];
+    appSecondaryColor = [UIColor colorFromHex:0x2980b9];
   }
   
   return appSecondaryColor;

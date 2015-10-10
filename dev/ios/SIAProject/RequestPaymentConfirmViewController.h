@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface RequestPaymentConfirmViewController : UITableViewController
+@interface RequestPaymentConfirmViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *requestedUser;
 

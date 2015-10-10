@@ -23,6 +23,7 @@ static NSString *const kRequestCellIdentifier = @"RequestCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.view setBackgroundColor:[UIColor whiteColor]];
   [self configureNavigationBar];
   [self initializeTableView];
 }
@@ -98,7 +99,7 @@ static NSString *const kRequestCellIdentifier = @"RequestCellIdentifier";
   NSDictionary *request = requestList[indexPath.row];
   [cell setAmount:request[@"amount"]];
   [cell setRequestName:request[@"requestUser"][@"name"]];
-  [cell setRequestName:request[@"reason"]];
+  [cell setReason:request[@"reason"]];
   [cell setIndex:(int) indexPath.row];
   [cell setDelegate:self];
   
@@ -108,6 +109,7 @@ static NSString *const kRequestCellIdentifier = @"RequestCellIdentifier";
 - (void)acceptButtonPresed:(int)index {
   NSDictionary *request = requestList[index];
   ResponsePaymentConfirmViewController *vc = [[ResponsePaymentConfirmViewController alloc] init];
+  vc.paymentRequest = request;
   [self.navigationController pushViewController:vc animated:TRUE];
 }
 

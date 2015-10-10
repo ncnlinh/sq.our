@@ -68,19 +68,15 @@ static NSInteger const kTitleLabelIconSize = 16;
   FAKIcon *icon;
   switch (_menuItemType) {
     case kSideBarMenuItemFlights:
-      title = @"Flights";
-      icon = [FAKFontAwesome usersIconWithSize:kIconLabelIconSize];
-      break;
-    case kSideBarMenuItemChats:
-      title = @"Chats";
-      icon = [FAKFontAwesome calendarOIconWithSize:kIconLabelIconSize];
+      title = @"Discover!";
+      icon = [FAKFontAwesome paperPlaneIconWithSize:kIconLabelIconSize];
       break;
     case kSideBarMenuItemPayment:
-      title = @"Payment";
-      icon = [FAKFontAwesome tasksIconWithSize:kIconLabelIconSize];
+      title = @"PalShare";
+      icon = [FAKIonIcons cardIconWithSize:kIconLabelIconSize];
       break;
     case kSideBarMenuItemLogOut:
-      icon = [FAKIonIcons loopIconWithSize:kIconLabelIconSize];
+      icon = [FAKIonIcons logOutIconWithSize:kIconLabelIconSize];
       title = @"Log Out";
       break;
     default:

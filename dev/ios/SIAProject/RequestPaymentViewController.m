@@ -22,6 +22,8 @@ static NSString *const kUserCellIdentifier = @"UserCellIdentifier";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.view setBackgroundColor:[UIColor whiteColor]];
+  
   requestList = @[];
   [self configureNavigationBar];
   [self initializeTableView];

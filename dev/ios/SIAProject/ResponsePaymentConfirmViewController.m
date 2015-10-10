@@ -14,6 +14,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.view setBackgroundColor:[UIColor whiteColor]];
   [self configureNavigationBar];
   [self configureTextField];
   [self configureButton];
@@ -38,11 +39,11 @@
   bankAccountNumberTextField = [[UITextField alloc] init];
   [self.view addSubview:bankAccountNumberTextField];
   
-  bankAccountNumberTextField.placeholder = @"Bank Account";
+  bankAccountNumberTextField.placeholder = @"Card Number";
   
   [bankAccountNumberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(self.view.mas_top).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
+    make.centerX.mas_equalTo(self.view.mas_centerX);
     make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
   }];
 

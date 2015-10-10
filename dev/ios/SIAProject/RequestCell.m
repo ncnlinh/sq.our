@@ -4,6 +4,7 @@
 
 #import "RequestCell.h"
 
+#import "UIColor+Helper.h"
 #import "ShadowUIView.h"
 #import "UIView+Helper.h"
 #import "UIFont+Helper.h"
@@ -102,7 +103,7 @@ static CGFloat const kConfirmButtonSize = 30.0;
   [self bringSubviewToFront:confirmButton];
   
   // Configure appearance & behaviors
-  [confirmButton setBackgroundColor:[UIColor blueColor]];
+  [confirmButton setBackgroundColor:[UIColor appSecondaryColor]];
   [confirmButton setCornerRadius:kConfirmButtonSize / 2.0];
   [confirmButton configureForShadows];
   [confirmButton setShadowColor:[UIColor blackColor]];
@@ -112,7 +113,7 @@ static CGFloat const kConfirmButtonSize = 30.0;
   [confirmButton addTarget:self
                  action:@selector(confirmButtonPressed:)
        forControlEvents:UIControlEventTouchUpInside];
-  FAKIcon *addIcon = [FAKIonIcons plusRoundIconWithSize:25];
+  FAKIcon *addIcon = [FAKIonIcons cardIconWithSize:25];
   [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
   [confirmButton setAttributedTitle:[addIcon attributedString] forState:UIControlStateNormal];
   
@@ -126,7 +127,7 @@ static CGFloat const kConfirmButtonSize = 30.0;
 
 - (void)setAmount:(NSString *)amount {
   _amount = amount;
-  [amountLabel setText:[NSString stringWithFormat:@"%@SGD", _amount]];
+  [amountLabel setText:[NSString stringWithFormat:@"$%@", _amount]];
 }
 
 - (void)setRequestName:(NSString *)requestName {

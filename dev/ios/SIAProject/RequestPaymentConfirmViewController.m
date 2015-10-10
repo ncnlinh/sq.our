@@ -19,6 +19,7 @@
   [super viewDidLoad];
   [self configureNavigationBar];
   [self configureTextFields];
+  [self configureButton];
 }
 
 - (void)configureNavigationBar {
@@ -41,11 +42,11 @@
   bankAccountNumberTextField = [[UITextField alloc] init];
   [self.view addSubview:bankAccountNumberTextField];
   
-  bankAccountNumberTextField.placeholder = @"Bank Account";
+  bankAccountNumberTextField.placeholder = @"Card Number";
   
   [bankAccountNumberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(self.view.mas_top).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
+    make.centerX.mas_equalTo(self.view.mas_centerX);
     make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
   }];
   
@@ -56,7 +57,7 @@
   
   [amountTextField mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(bankAccountNumberTextField.mas_bottom).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
+    make.centerX.mas_equalTo(self.view.mas_centerX);
     make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
   }];
   
@@ -67,7 +68,7 @@
   
   [reasoNTextField mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(amountTextField.mas_bottom).with.offset(20);
-    make.centerY.mas_equalTo(self.view.mas_centerY);
+    make.centerX.mas_equalTo(self.view.mas_centerX);
     make.width.mas_equalTo(self.view.mas_width).with.offset(-40);
   }];
 }

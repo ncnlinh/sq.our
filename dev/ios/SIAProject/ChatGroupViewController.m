@@ -14,7 +14,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = @"Group Chat";
+  self.title = @"PALCONNECT";
   
   /**
    *  You MUST set your senderId and display name

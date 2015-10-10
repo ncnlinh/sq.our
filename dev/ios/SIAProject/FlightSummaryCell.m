@@ -7,6 +7,7 @@
 #import "ShadowUIView.h"
 #import "UIView+Helper.h"
 #import "UIFont+Helper.h"
+#import "UIColor+Helper.h"
 #import "ShadowedUIButton.h"
 
 @implementation FlightSummaryCell {
@@ -18,7 +19,7 @@
   UIButton *chatButton;
 }
 
-static CGFloat const kChatButtonSize = 30.0;
+static CGFloat const kChatButtonSize = 45.0;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier {
@@ -54,8 +55,8 @@ static CGFloat const kChatButtonSize = 30.0;
   
   [cardView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.mas_equalTo(self.mas_top).with.offset(20);
-    make.left.mas_equalTo(self.mas_left).with.offset(20);
-    make.right.mas_equalTo(self.mas_right).with.offset(-20);
+    make.left.mas_equalTo(self.mas_left).with.offset(30);
+    make.right.mas_equalTo(self.mas_right).with.offset(-30);
     make.bottom.mas_equalTo(self.mas_bottom).with.offset(-20);
   }];
 }
@@ -123,7 +124,7 @@ static CGFloat const kChatButtonSize = 30.0;
   [self bringSubviewToFront:chatButton];
   
   // Configure appearance & behaviors
-  [chatButton setBackgroundColor:[UIColor blueColor]];
+  [chatButton setBackgroundColor:[UIColor appSecondaryColor]];
   [chatButton setCornerRadius:kChatButtonSize / 2.0];
   [chatButton configureForShadows];
   [chatButton setShadowColor:[UIColor blackColor]];
@@ -133,7 +134,7 @@ static CGFloat const kChatButtonSize = 30.0;
   [chatButton addTarget:self
                           action:@selector(chatButtonPressed:)
                  forControlEvents:UIControlEventTouchUpInside];
-  FAKIcon *addIcon = [FAKIonIcons plusRoundIconWithSize:25];
+  FAKIcon *addIcon = [FAKIonIcons chatboxesIconWithSize:28];
   [addIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
   [chatButton setAttributedTitle:[addIcon attributedString] forState:UIControlStateNormal];
   

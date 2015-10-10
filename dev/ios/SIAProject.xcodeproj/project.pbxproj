@@ -20,7 +20,6 @@
 		0F5933611BC6C61F00DEC827 /* FlightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5933601BC6C61F00DEC827 /* FlightCell.m */; settings = {ASSET_TAGS = (); }; };
 		0F6E4BA41BC2B87500ADD31B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA31BC2B87500ADD31B /* main.m */; };
 		0F6E4BA71BC2B87500ADD31B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */; };
-		0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */; };
 		0F7170A41BC534FD00970A68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A31BC534FD00970A68 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170A71BC5381000970A68 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170A61BC5381000970A68 /* UIColor+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		0F7170B31BC6862800970A68 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7170B21BC6862800970A68 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -69,6 +68,8 @@
 		0FE022981BC8A6780031EECA /* RequestPaymentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE022971BC8A6780031EECA /* RequestPaymentConfirmViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0FE0229B1BC8AC6E0031EECA /* RequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0229A1BC8AC6E0031EECA /* RequestCell.m */; settings = {ASSET_TAGS = (); }; };
 		0FE0229E1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0229D1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0FE022A01BC8BF670031EECA /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0229F1BC8BF670031EECA /* IndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		0FE022A51BC8C4E40031EECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FE022A41BC8C4E40031EECA /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA81791BC866F700B04138 /* FlightSummaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		0FF0408B1BC878FF0025BA71 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0408A1BC878FF0025BA71 /* ChatData.m */; settings = {ASSET_TAGS = (); }; };
 		1E9E586AA42CE53BF6EB33F2 /* libPods-SIAProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A33E37F747A03A3A2C9B936 /* libPods-SIAProject.a */; };
@@ -101,7 +102,6 @@
 		0F6E4BA31BC2B87500ADD31B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F6E4BB31BC2B87500ADD31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7170A21BC534FD00970A68 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0F7170A31BC534FD00970A68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -178,6 +178,9 @@
 		0FE0229A1BC8AC6E0031EECA /* RequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestCell.m; sourceTree = "<group>"; };
 		0FE0229C1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsePaymentConfirmViewController.h; sourceTree = "<group>"; };
 		0FE0229D1BC8B5C00031EECA /* ResponsePaymentConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsePaymentConfirmViewController.m; sourceTree = "<group>"; };
+		0FE0229F1BC8BF670031EECA /* IndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorView.m; sourceTree = "<group>"; };
+		0FE022A11BC8BF780031EECA /* IndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorView.h; sourceTree = "<group>"; };
+		0FE022A41BC8C4E40031EECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FEA81781BC866F700B04138 /* FlightSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSummaryCell.h; sourceTree = "<group>"; };
 		0FEA81791BC866F700B04138 /* FlightSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSummaryCell.m; sourceTree = "<group>"; };
 		0FF040891BC878FF0025BA71 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
@@ -296,10 +299,10 @@
 				0FBD2C361BC2C41900FA149B /* Controllers */,
 				0F6E4BA51BC2B87500ADD31B /* AppDelegate.h */,
 				0F6E4BA61BC2B87500ADD31B /* AppDelegate.m */,
-				0F6E4BAE1BC2B87500ADD31B /* Assets.xcassets */,
 				0F6E4BB31BC2B87500ADD31B /* Info.plist */,
 				0F6E4BA21BC2B87500ADD31B /* Supporting Files */,
 				0FBD2C371BC2C67D00FA149B /* Launch Screen.storyboard */,
+				0FE022A41BC8C4E40031EECA /* Assets.xcassets */,
 			);
 			path = SIAProject;
 			sourceTree = "<group>";
@@ -465,6 +468,8 @@
 				0F7171041BC691D800970A68 /* ExtendedUILabel.m */,
 				0FAC945C1BC7E82E008B4883 /* ShadowedUIButton.h */,
 				0FAC945D1BC7E82E008B4883 /* ShadowedUIButton.m */,
+				0FE022A11BC8BF780031EECA /* IndicatorView.h */,
+				0FE0229F1BC8BF670031EECA /* IndicatorView.m */,
 			);
 			name = "Extended Views";
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				0F7170F11BC68EFF00970A68 /* Lato-HairlineItalic.ttf in Resources */,
 				0F7170EE1BC68EFF00970A68 /* Lato-Bold.ttf in Resources */,
 				0FBD2C381BC2C67D00FA149B /* Launch Screen.storyboard in Resources */,
+				0FE022A51BC8C4E40031EECA /* Assets.xcassets in Resources */,
 				0F7170FB1BC68EFF00970A68 /* OpenSans-Light.ttf in Resources */,
 				0F7170F31BC68EFF00970A68 /* Lato-Light.ttf in Resources */,
 				0F7170F91BC68EFF00970A68 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -586,7 +592,6 @@
 				0F7170FA1BC68EFF00970A68 /* OpenSans-Italic.ttf in Resources */,
 				0F7170FC1BC68EFF00970A68 /* OpenSans-LightItalic.ttf in Resources */,
 				0F7170F21BC68EFF00970A68 /* Lato-Italic.ttf in Resources */,
-				0F6E4BAF1BC2B87500ADD31B /* Assets.xcassets in Resources */,
 				0F7170F81BC68EFF00970A68 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +678,7 @@
 				0F7170C61BC6893C00970A68 /* PaymentViewController.m in Sources */,
 				0FEA817A1BC866F700B04138 /* FlightSummaryCell.m in Sources */,
 				0FAC94521BC7DDAB008B4883 /* DateModalViewController.m in Sources */,
+				0FE022A01BC8BF670031EECA /* IndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

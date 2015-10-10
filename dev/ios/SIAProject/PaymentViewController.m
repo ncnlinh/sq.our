@@ -3,6 +3,7 @@
 
 #import "PaymentViewController.h"
 
+#import "UIView+Helper.h"
 #import "UIViewController+SideBarViewController.h"
 #import "UIColor+Helper.h"
 #import "RequestPaymentViewController.h"
@@ -62,22 +63,36 @@
   [self.view addSubview:requestButton];
   
   [requestButton setTitle:@"Payment Request" forState:UIControlStateNormal];
+  [requestButton setBackgroundColor:[UIColor appPrimaryColor]];
+  [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [requestButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [requestButton setCornerRadius:4.0];
+  [requestButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
+
   [requestButton addTarget:self action:@selector(requestButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   [requestButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.bottom.mas_equalTo(self.view.mas_centerY).with.offset(-10);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
   
   responseButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [self.view addSubview:responseButton];
   
   [responseButton setTitle:@"Response Request" forState:UIControlStateNormal];
-  [responseButton addTarget:self action:@selector(requestButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [responseButton setBackgroundColor:[UIColor appPrimaryColor]];
+  [responseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [responseButton.titleLabel setFont:[UIFont systemFontOfSize:18 weight:1.0]];
+  [responseButton setCornerRadius:4.0];
+  [responseButton setContentEdgeInsets:UIEdgeInsetsMake(5, 10, 10, 5)];
+
+  [responseButton addTarget:self action:@selector(responseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   [responseButton mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.mas_equalTo(self.view.mas_centerX);
     make.top.mas_equalTo(self.view.mas_centerY).with.offset(10);
+    make.width.mas_equalTo(self.view.mas_width).with.offset(-50);
   }];
 }
 
