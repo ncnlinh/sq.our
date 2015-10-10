@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import {MongooseHelper, ResponseHelper} from '../helpers';
 import {Mastercard} from './ApiHelper/';
-import {PaymentRequest} from '../models';
+import {User, PaymentRequest} from '../models';
 import {ClientError} from '../helpers/errors';
 const DEBUG_ENV = 'PaymentController';
 
@@ -78,7 +78,21 @@ PaymentController.request.view = (req, res) => {
 
 PaymentController.promise.view = (req, res) => {
   const {facebookId} = req.body;
-  return MongooseHelper.find(PaymentRequest, {receivedUser: facebookId});
+  return MongooseHelper.find(PaymentRequest, {receivedUser: facebookId})
+    .then((paymentRequests) => {
+      let rs = paymentRequests;
+      return MongooseHelper.find(User)
+      .then((allUsers) => {
+        let us = allUsers;
+        rs = rs.map((r) => {
+          let r2 = r.toObject();
+          let i =_.findIndex(us,(chr) => {return chr.facebookId.toString() === r.requestUser});
+          r2.requestUser = us[i]
+          return r2;
+        });
+        return Promise.resolve(rs);
+      })
+    });
 }
 
 PaymentController.request.pay = (req, res) => {
