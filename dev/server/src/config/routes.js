@@ -11,6 +11,7 @@ import {
 
 export default (app) => {
   app.post('/api/login', UserController.request.createUser);
+  app.post('/api/users', UserController.request.getAll);
   app.post('/api/flight/users', FlightController.request.findUsersForFlight);
   app.post('/api/flightsearch', FlightSearchController.request.search);
   app.post('/api/flight/queryAndCreate', FlightController.request.queryAndCreate);
