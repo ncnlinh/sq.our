@@ -17,6 +17,12 @@ UserController.request.createUser = (req, res) => {
     .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
 };
 
+UserController.request.getAll = (req, res) => {
+  UserController.promise.getAll(req)
+    .then((user) => ResponseHelper.success(res, user))
+    .catch((error) => ResponseHelper.error(res, error, DEBUG_ENV));
+};
+
 UserController.request.addLikedPlace = (req, res) => {
   UserController.promise.addLikedPlace(req)
     .then((user) => ResponseHelper.success(res, user))
@@ -55,6 +61,10 @@ UserController.promise.createUser = (req, res) => {
       return MongooseHelper.create(User, {facebookId, name});
     })
 };
+
+UserController.promise.getAll = (req, res) => {
+  return MongooseHelper.find(User);
+}
 
 UserController.promise.addLikedPlace = (req, res) => {
   const {facebookId, flightId, placeId} = req.body;
